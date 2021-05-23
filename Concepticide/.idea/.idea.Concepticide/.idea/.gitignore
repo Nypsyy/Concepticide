@@ -2,12 +2,12 @@
 /shelf/
 /workspace.xml
 # Rider ignored files
-/modules.xml
-/projectSettingsUpdater.xml
 /contentModel.xml
 /.idea.Concepticide.iml
+/projectSettingsUpdater.xml
+/modules.xml
 # Datasource local storage ignored files
-/../../../../../../../../../../../:\$Travail\Info\C#\UnityProject\Concepticide\Concepticide\Concepticide\.idea\.idea.Concepticide\.idea/dataSources/
+/dataSources/
 /dataSources.local.xml
 # Editor-based HTTP Client requests
 /httpRequests/
