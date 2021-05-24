@@ -5,8 +5,9 @@ using UnityEngine;
 public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
-
     public float speed = 6f;
+
+    private bool justTeleported;
     
     // Update is called once per frame
     void Update()
