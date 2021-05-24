@@ -7,6 +7,8 @@ public class PlayerCombat : MonoBehaviour
     public string playerName;
     public float hp, mana, attack, defense, speed;
     public CombatManager combatManager;
+    public MenuPanel menuPanel;
+
     // public PlayerInventory inventory;
     // public CombatMenu menu;
     // public Canvas menuCanvas;
@@ -15,13 +17,13 @@ public class PlayerCombat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        menuPanel.selectionHandler = (optionName) => { Debug.Log(optionName); };
+        menuPanel.SetOptions(new string[]{"Attaque", "Défense", "Magie", "Objets", "Fuir"});
     }
 
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     public void StartTurn() {
