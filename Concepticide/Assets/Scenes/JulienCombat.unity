@@ -180,6 +180,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14f4f60387c6fb64f954511f05df977f, type: 3}
+--- !u!1 &499448485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 499448487}
+  - component: {fileID: 499448486}
+  m_Layer: 0
+  m_Name: CombatManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &499448486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499448485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274ab0db1dc1b6b9ca28ff8b8a98f491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCombat: {fileID: 524291857}
+  bosses:
+  - {fileID: 2098751109}
+--- !u!4 &499448487
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 499448485}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5.166658, y: -4.047226, z: 24.255535}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &524291855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -189,7 +235,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 131680, guid: 11ffba29df14c054aa5a2695b18e9f59, type: 3}
       propertyPath: m_Name
-      value: Character_Hero_Knight_Female
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 422474, guid: 11ffba29df14c054aa5a2695b18e9f59, type: 3}
       propertyPath: m_RootOrder
@@ -237,6 +283,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11ffba29df14c054aa5a2695b18e9f59, type: 3}
+--- !u!1 &524291856 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 131680, guid: 11ffba29df14c054aa5a2695b18e9f59, type: 3}
+  m_PrefabInstance: {fileID: 524291855}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &524291857
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524291856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d64847264aa4f15bdf5b39554883be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerName: 
+  hp: 100
+  mana: 100
+  attack: 20
+  defense: 10
+  speed: 1
+  combatManager: {fileID: 499448486}
 --- !u!1001 &1242917869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -408,7 +478,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1233347782355984, guid: e218b66930d51a741a5150ddb1bfeec0, type: 3}
       propertyPath: m_Name
-      value: Character_Mystic_01
+      value: TradingBoss
       objectReference: {fileID: 0}
     - target: {fileID: 4163706531932942, guid: e218b66930d51a741a5150ddb1bfeec0, type: 3}
       propertyPath: m_RootOrder
@@ -468,6 +538,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e218b66930d51a741a5150ddb1bfeec0, type: 3}
+--- !u!1 &2098751108 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1233347782355984, guid: e218b66930d51a741a5150ddb1bfeec0, type: 3}
+  m_PrefabInstance: {fileID: 2098751107}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2098751109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098751108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6858ff23075cf8bd5afec05a8435f57a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossName: Commerce
+  hp: 100
+  attack: 15
+  defense: 10
+  speed: 1
+  attacks:
+  - Light
+  - Heavy
+  - Magic
 --- !u!1 &2143071704
 GameObject:
   m_ObjectHideFlags: 0
