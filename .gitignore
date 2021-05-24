@@ -1,4 +1,6 @@
 *.log
+.idea
+[Ll]ogs/
 
 [Ll]ibrary/
 [Tt]emp/
