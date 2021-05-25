@@ -8,6 +8,8 @@ public class Boss : MonoBehaviour
     public float hp, attack, defense, speed;
     public string[] attacks;
 
+    private CombatManager _combatManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,7 +21,12 @@ public class Boss : MonoBehaviour
         
     }
 
+    public void StartCombat(CombatManager manager) {
+        _combatManager = manager;
+    }
     public void StartTurn() {
-
+        _combatManager.menuPanel.DisplayInfo("Le boss ne fait rien (ses attaques ne sont pas implémentées).", () => {
+            _combatManager.StartPlayerTurn();
+        });
     }
 }
