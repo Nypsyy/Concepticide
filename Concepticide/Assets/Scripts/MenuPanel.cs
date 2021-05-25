@@ -53,8 +53,9 @@ public class MenuPanel : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return)) {
             gameObject.SetActive(false);
             if (_infoValidationHandler != null) {
-                _infoValidationHandler();
+                var validationHandler = _infoValidationHandler;
                 _infoValidationHandler = null;
+                validationHandler();
             } else {
                 _options[_selectedPos].option.onValidation();
             }
@@ -67,9 +68,10 @@ public class MenuPanel : MonoBehaviour
         _lastInfoText = text;
     }
 
-    public void DisplayInfo(string text, ValidationDelegate onValidation) {
+    public void DisplayInfo(string text, ValidationDelegate onValidation) {    
         gameObject.SetActive(true);
-        
+        GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 0);
+
         PushInfo(text);
         _infoValidationHandler = onValidation;
     }
