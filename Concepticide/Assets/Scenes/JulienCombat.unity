@@ -319,6 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuChoice: {fileID: 107480160}
+  infoText: {fileID: 1573666687}
 --- !u!1001 &471700343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -376,53 +377,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 14f4f60387c6fb64f954511f05df977f, type: 3}
---- !u!1 &499448485
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 499448487}
-  - component: {fileID: 499448486}
-  m_Layer: 0
-  m_Name: CombatManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &499448486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499448485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 274ab0db1dc1b6b9ca28ff8b8a98f491, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCombat: {fileID: 524291857}
-  bosses:
-  - {fileID: 2098751109}
-  infoText: {fileID: 1573666687}
---- !u!4 &499448487
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 499448485}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.166658, y: -4.047226, z: 24.255535}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &524291855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -503,8 +457,6 @@ MonoBehaviour:
   attack: 20
   defense: 10
   speed: 1
-  combatManager: {fileID: 499448486}
-  menuPanel: {fileID: 229390311}
 --- !u!1001 &1242917869
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -741,8 +693,9 @@ GameObject:
   - component: {fileID: 1938162977}
   - component: {fileID: 1938162976}
   - component: {fileID: 1938162975}
+  - component: {fileID: 1938162978}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: CombatManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -830,6 +783,23 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &1938162978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938162973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 274ab0db1dc1b6b9ca28ff8b8a98f491, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCombat: {fileID: 524291857}
+  bosses:
+  - {fileID: 2098751109}
+  infoText: {fileID: 1573666687}
+  menuPanel: {fileID: 229390311}
 --- !u!1 &1976491149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1082,7 +1052,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2143071704
 GameObject:

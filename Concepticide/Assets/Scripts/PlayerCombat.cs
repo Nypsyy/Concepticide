@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Option = MenuPanel.Option;
+
 public class PlayerCombat : MonoBehaviour
 {
     public string playerName;
     public float hp, mana, attack, defense, speed;
-    public CombatManager combatManager;
-    public MenuPanel menuPanel;
+    private CombatManager _combatManager;
 
     private enum _SubMenu { Main, Attack, Magic, Objects };
 
@@ -19,7 +20,7 @@ public class PlayerCombat : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _SetMenu(_SubMenu.Main);
+        
     }
 
 
@@ -28,57 +29,46 @@ public class PlayerCombat : MonoBehaviour
     {
     }
 
+    public void StartCombat(CombatManager manager) {
+        _combatManager = manager;
+    }
+
     public void StartTurn() {
-        // menuCanvas.setActive(true);
-        
-        // menuCanvas.addChild("Attaque");
-        // menuCanvas.addChild("Défense");
-        // menuCanvas.addChild("Magie");
-        // menuCanvas.addChild("Objets");
+        _SetMenu(_SubMenu.Main);
     }
 
     private void _SetMenu(_SubMenu menu) {
+
         switch(menu) {
             case _SubMenu.Main:
-                menuPanel.SetOptions(new string[]{"Attaque", "Défense", "Magie", "Objets", "Fuir"});
-                menuPanel.selectionHandler = (optionName) => {
-                    switch (optionName) {
-                        case "Attaque": _SetMenu(_SubMenu.Attack); break;
-                        case "Défense": combatManager.SetInfoText("Défense x2..."); break;
-                        case "Magie": _SetMenu(_SubMenu.Magic); break;
-                        case "Objets": _SetMenu(_SubMenu.Objects); break;
-                        case "Fuir": combatManager.SetInfoText("Fuite!"); break;
-                    }
-                };
+                _combatManager.menuPanel.DisplayMenu(new Option[]{
+                    new Option("Attaque...", null, () => _SetMenu(_SubMenu.Attack)),
+                    new Option("Défense", "Votre défense sera doublée pour le prochain tour.",
+                                () => Debug.Log("Défense x2")),
+                    new Option("Magie...", null, () => _SetMenu(_SubMenu.Magic)),
+                    new Option("Objets...", null, () => _SetMenu(_SubMenu.Objects)),
+                    new Option("Fuir", "Vous quitterez le combat.", () => Debug.Log("FUITE!")),
+                });
                 break;
             case _SubMenu.Attack:
-                menuPanel.SetOptions(new string[]{"Légère", "Lourde", "Retour"});
-                menuPanel.selectionHandler = (optionName) => {
-                    switch (optionName) {
-                        case "Légère": combatManager.SetInfoText("Attaque légère..."); break;
-                        case "Lourde": combatManager.SetInfoText("Attaque lourde..."); break;
-                        case "Retour": _SetMenu(_SubMenu.Main); break;
-                    }
-                };
+                _combatManager.menuPanel.DisplayMenu(new Option[]{
+                    new Option("Légère", "20 dégâts bruts", () => Debug.Log("LEGERE!")),
+                    new Option("Lourde", "50 dégâts bruts", () => Debug.Log("LOURDE!")),
+                    new Option("Retour...", "", () => _SetMenu(_SubMenu.Main)),
+                });
                 break;
             case _SubMenu.Magic:
-                menuPanel.SetOptions(new string[]{"Attq+", "Déf+", "Vit+", "Retour"});
-                menuPanel.selectionHandler = (optionName) => {
-                    switch (optionName) {
-                        case "Attq+": combatManager.SetInfoText("Plus d'attaque..."); break;
-                        case "Déf+": combatManager.SetInfoText("Plus de défense..."); break;
-                        case "Vit+": combatManager.SetInfoText("Plus de vitesse..."); break;
-                        case "Retour": _SetMenu(_SubMenu.Main); break;
-                    }
-                };
+                _combatManager.menuPanel.DisplayMenu(new Option[]{
+                    new Option("Atq+", "Attaque += 5 pendant 2 tours", () => Debug.Log("ATQ+!")),
+                    new Option("Déf+", "Défense += 5 pendant 2 tours", () => Debug.Log("DEF+!")),
+                    new Option("Vit+", "Vitesse x2 pendant 2 tours", () => Debug.Log("VIT+!")),
+                    new Option("Retour...", "", () => _SetMenu(_SubMenu.Main)),
+                });
                 break;
             case _SubMenu.Objects:
-                menuPanel.SetOptions(new string[]{"Retour"});
-                menuPanel.selectionHandler = (optionName) => {
-                    switch (optionName) {
-                        case "Retour": _SetMenu(_SubMenu.Main); break;
-                    }
-                };
+                _combatManager.menuPanel.DisplayMenu(new Option[]{
+                    new Option("Retour...", "", () => _SetMenu(_SubMenu.Main)),
+                });
                 break;
         }
     }

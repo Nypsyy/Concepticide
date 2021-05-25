@@ -10,15 +10,19 @@ public class CombatManager : MonoBehaviour
 
     public Text infoText;
 
+    public MenuPanel menuPanel;
+
 
     private Boss _activeBoss = null;
+
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        menuPanel.PushInfo("Le combat vient de commencer !");
+        Invoke("_StartCombatDebug", 0);
     }
-
 
     // Update is called once per frame
     void Update()
@@ -26,8 +30,12 @@ public class CombatManager : MonoBehaviour
         
     }
 
+    private void _StartCombatDebug() {
+        StartCombat("Commerce");
+    }
+
     public void StartCombat(string name) {
-        if (_activeBoss != null) Debug.Log("combat already launching");
+        if (_activeBoss != null) Debug.Log("combat already launched");
         foreach (var boss in bosses) {
             if (boss.bossName == name) {
                 _activeBoss = boss;
@@ -36,6 +44,9 @@ public class CombatManager : MonoBehaviour
         }
         if (_activeBoss == null) Debug.Log("Unknown boss name");
 
+        playerCombat.StartCombat(this);
+
+        playerCombat.StartTurn();
         // Faire des trucs avec _activeBoss
     }
 
