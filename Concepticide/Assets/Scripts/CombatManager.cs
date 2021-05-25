@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CombatManager : MonoBehaviour
 {
     public PlayerCombat playerCombat;
     public Boss[] bosses;
 
-    // public Canvas infoCanvas;
+    public Text infoText;
 
 
     private Boss _activeBoss = null;
@@ -39,7 +40,7 @@ public class CombatManager : MonoBehaviour
     }
 
     public void SetInfoText(string text) {
-        // infoCanvas.setText(text);
+        infoText.text = text;
     }
 
     public void EndTurn() {

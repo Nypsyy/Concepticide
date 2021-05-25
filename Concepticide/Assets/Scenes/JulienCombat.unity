@@ -408,6 +408,7 @@ MonoBehaviour:
   playerCombat: {fileID: 524291857}
   bosses:
   - {fileID: 2098751109}
+  infoText: {fileID: 1573666687}
 --- !u!4 &499448487
 Transform:
   m_ObjectHideFlags: 0
