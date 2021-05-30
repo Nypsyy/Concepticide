@@ -5,21 +5,38 @@ using UnityEngine.UI;
 
 public class MenuPanel : MonoBehaviour
 {
+    public delegate void ValidationDelegate();
+    public struct Option {
+        public string name;
+        public string description;
+        public ValidationDelegate onValidation;
+        
+        public Option(string name_, string description_, ValidationDelegate onValidation_) {
+            name = name_;
+            description = description_;
+            onValidation = onValidation_;
+        }
+    }
+
     public delegate void SelectionHandler(string optionName);
     public GameObject menuChoice;
+    public Text infoText;
 
     // Will be called on selection validation.
     public SelectionHandler selectionHandler = (optionName) => {};
 
-    private List<(string name, GameObject obj, Text text)> _options = new List<(string name, GameObject obj, Text text)>();
+    private List<(Option option, GameObject obj, Text text)> _options = new List<(Option option, GameObject obj, Text text)>();
     private int _selectedPos = 0;
 
+    private string _lastInfoText = "";
+
+    private ValidationDelegate _infoValidationHandler;
 
     void Start()
     {
         menuChoice.SetActive(false);
         menuChoice.transform.SetParent(null, false);
-
+        gameObject.SetActive(false);
     }
 
 
@@ -33,31 +50,50 @@ public class MenuPanel : MonoBehaviour
         if (Input.GetKeyDown("down"))
             _UpdateSelectedPos(_selectedPos + 1);
         
-        if (Input.GetKeyDown(KeyCode.Return))
-            selectionHandler(_options[_selectedPos].name);
+        if (Input.GetKeyDown(KeyCode.Return)) {
+            gameObject.SetActive(false);
+            if (_infoValidationHandler != null) {
+                var validationHandler = _infoValidationHandler;
+                _infoValidationHandler = null;
+                validationHandler();
+            } else {
+                _options[_selectedPos].option.onValidation();
+            }
+        }
 
     }
 
+    public void PushInfo(string text) {
+        infoText.text = text;
+        _lastInfoText = text;
+    }
 
-    public void SetOptions(string[] optionNames, int selectedPos=0) {
-        // Deleting existing options
-        foreach (var (_,option,_) in _options) {
-            GameObject.Destroy(option);
-        }
+    public void DisplayInfo(string text, ValidationDelegate onValidation) {    
+        gameObject.SetActive(true);
+        GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 0);
+
+        PushInfo(text);
+        _infoValidationHandler = onValidation;
+    }
+
+    public void DisplayMenu(Option[] options) {
+        gameObject.SetActive(true);
+
+        foreach (var (_, gameObj,_) in _options)
+            GameObject.Destroy(gameObj);
         _options.Clear();
-        
-        // Pushing new options
-        foreach (var optionName in optionNames) {
-            var option = Instantiate(menuChoice, transform);
-            option.SetActive(true);
-            var text = option.GetComponent<Text>();
-            text.text = optionName;
-            _options.Add((optionName, option, text));
-        }
 
+        foreach (Option option in options) {
+            var gameObj = Instantiate(menuChoice, transform);
+            gameObj.SetActive(true);
+            var text = gameObj.GetComponent<Text>();
+            text.text = option.name;
+            _options.Add((option, gameObj, text));
+        }
+        
         GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 80 * _options.Count);
         _selectedPos = 0;
-        _UpdateSelectedPos(selectedPos);
+        _UpdateSelectedPos(_selectedPos);
     }
 
     private void _UpdateSelectedPos(int newPos) {
@@ -69,10 +105,9 @@ public class MenuPanel : MonoBehaviour
         _options[_selectedPos].text.fontStyle = FontStyle.Normal;
         _selectedPos = newPos;
         _options[_selectedPos].text.fontStyle = FontStyle.Bold;
-    }
 
-    void RemoveOptions()
-    {
+        string desc = _options[_selectedPos].option.description;
+        infoText.text = desc == null ? _lastInfoText : desc;
     }
 
 }
