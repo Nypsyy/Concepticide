@@ -12,11 +12,42 @@ public class CombatManager : MonoBehaviour
 
     public MenuPanel menuPanel;
 
+    public Canvas playerStats;
+    public Canvas bossStats;
 
+    public Slider playerHealthBar;
+    public Slider playerManaBar;
+    public Slider bossHealthBar;
 
-    public float playerHP { get; private set; }
-    public float playerMana { get; private set; }
-    public float bossHP { get; private set; }
+    private float _playerHP;
+    private float _playerMana;
+    private float _bossHP;
+
+    public float playerHP { 
+        get { return _playerHP; } 
+        private set 
+        {
+            _playerHP = value;
+            playerHealthBar.value = value;
+        } 
+    }
+
+    public float playerMana { 
+        get { return _playerMana; } 
+        private set 
+        {
+            _playerMana = value;
+            playerManaBar.value = value;
+        } 
+    }
+
+    public float bossHP {
+        get { return _bossHP; } 
+        private set{
+            _bossHP = value;
+            bossHealthBar.value = value;;
+        } 
+    }
 
     public delegate void CombatEndDelegate(bool hasPlayerWon);
 
@@ -45,6 +76,9 @@ public class CombatManager : MonoBehaviour
         playerMana = playerCombat.mana;
         bossHP = boss.hp;
 
+        playerStats.enabled = true;
+        bossStats.enabled = true;
+        UpdateStatsUI();
         playerCombat.StartCombat(this);
         boss.StartCombat(this);
 
@@ -57,6 +91,12 @@ public class CombatManager : MonoBehaviour
         infoText.text = text;
     }
 
+    public void UpdateStatsUI()
+    {
+        playerHealthBar.value = playerHP;
+        playerManaBar.value = playerMana;
+        bossHealthBar.value = bossHP;
+    }
 
     private int _heavyAttackCooldown = 0;
     private int _magicAttackCooldown = 0;
