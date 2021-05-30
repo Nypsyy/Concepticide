@@ -5,6 +5,7 @@ using UnityEngine;
 public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
+    public Animator animator;
     public Transform cam;
     public float speed = 6f;
 
@@ -29,6 +30,19 @@ public class ThirdPersonMovement : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            /*animator.SetFloat("Direction x", moveDir.x);
+            animator.SetFloat("Direction z", moveDir.z);*/
+
+            animator.SetBool("isRunning", true);
         }
+        else
+        {
+            animator.SetBool("isRunning", false);
+
+            /*animator.SetFloat("Direction x", 0);
+            animator.SetFloat("Direction z", 0);*/
+        }
+
+        
     }
 }
