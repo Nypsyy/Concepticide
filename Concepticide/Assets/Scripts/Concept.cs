@@ -10,6 +10,8 @@ public class Concept : MonoBehaviour
     public Material m_NatureMaterial1;
     private GameObject[] m_ToHide;
 
+    public enum Id { Trading, Nature, Magic };
+
 
     void Start()
     {

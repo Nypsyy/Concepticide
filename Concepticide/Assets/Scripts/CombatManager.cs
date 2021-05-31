@@ -8,10 +8,9 @@ public class CombatManager : MonoBehaviour
     public PlayerCombat playerCombat;
     public Boss boss;
 
-    public Text infoText;
 
     public MenuPanel menuPanel;
-
+/*
     public Canvas playerStats;
     public Canvas bossStats;
 
@@ -20,18 +19,18 @@ public class CombatManager : MonoBehaviour
     public Slider bossHealthBar;
 
     public Text playerStatField;
-    public Text bossStatField;
+    public Text bossStatField; */
 
     private float _playerHP;
     private float _playerMana;
-    private float _bossHP;
+    private float _bossHP; 
 
     public float playerHP { 
         get { return _playerHP; } 
         private set 
         {
             _playerHP = value;
-            playerHealthBar.value = value;
+            playerCombat.healthBar.value = value;
         } 
     }
 
@@ -40,7 +39,7 @@ public class CombatManager : MonoBehaviour
         private set 
         {
             _playerMana = value;
-            playerManaBar.value = value;
+            playerCombat.manaBar.value = value;
         } 
     }
 
@@ -48,7 +47,7 @@ public class CombatManager : MonoBehaviour
         get { return _bossHP; } 
         private set{
             _bossHP = value;
-            bossHealthBar.value = value;;
+            boss.healthBar.value = value;;
         } 
     }
 
@@ -62,9 +61,6 @@ public class CombatManager : MonoBehaviour
     // The CombatManager will be active the next frame after construction.
     void Start()
     {
-        // Invoking next frame to ensure all objects have started
-        // and public members were initialized.
-        Invoke("_StartCombat", 0);
     }
 
     // Update is called once per frame
@@ -72,15 +68,13 @@ public class CombatManager : MonoBehaviour
     {
         
     }
-    private void _StartCombat() {
+    public void StartCombat() {
         menuPanel.PushInfo("Le combat vient de commencer !");
 
         playerHP = playerCombat.hp;
         playerMana = playerCombat.mana;
         bossHP = boss.hp;
 
-        playerStats.enabled = true;
-        bossStats.enabled = true;
         UpdateStatsUI();
         playerCombat.StartCombat(this);
         boss.StartCombat(this);
@@ -90,9 +84,6 @@ public class CombatManager : MonoBehaviour
         });
     }
 
-    public void SetInfoText(string text) {
-        infoText.text = text;
-    }
 
     public void UpdateStatsUI()
     {
@@ -118,8 +109,8 @@ public class CombatManager : MonoBehaviour
             }
         }
 
-        playerStatField.text = playerStatString;
-        bossStatField.text = "ATK : " + boss.attack + "\nDEF : " + boss.defense;
+        playerCombat.statField.text = playerStatString;
+        boss.statField.text = "ATK : " + boss.attack + "\nDEF : " + boss.defense;
     }
 
     private int _heavyAttackCooldown = 0;
@@ -190,6 +181,8 @@ public class CombatManager : MonoBehaviour
                 menuPanel.DisplayInfo($"Vous attaquez le {boss.bossName}, et lui infligez {damage} dégâts !", () => {
                     if (bossHP == 0) {
                         menuPanel.DisplayInfo($"Le {boss.bossName} a été tué, félicitations !", () => {
+                            playerCombat.StopCombat();
+                            boss.StopCombat();
                             if (endDelegate != null)
                                 endDelegate(true); // hasPlayerWon = true
                         });

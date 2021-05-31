@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 using Option = MenuPanel.Option;
 
@@ -8,9 +9,15 @@ public class PlayerCombat : MonoBehaviour
 {
     public string playerName;
     public float hp, mana, attack, defense, speed;
+
+    public Canvas stats;
+    public Slider healthBar;
+    public Slider manaBar;
+
+    public Text statField;
+
     private CombatManager _combatManager;
 
-    private enum _SubMenu { Main, Attack, Magic, Objects };
 
     public enum Action {
         // Actions
@@ -39,12 +46,19 @@ public class PlayerCombat : MonoBehaviour
 
     public void StartCombat(CombatManager manager) {
         _combatManager = manager;
+        stats.enabled = true;
     }
+
+    public void StopCombat() {
+        stats.enabled = false;
+    }
+
 
     public void StartTurn() {
         _SetMenu(_SubMenu.Main);
     }
 
+    private enum _SubMenu { Main, Attack, Magic, Objects };
     private void _SetMenu(_SubMenu menu) {
 
         switch(menu) {
