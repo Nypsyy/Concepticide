@@ -19,6 +19,9 @@ public class CombatManager : MonoBehaviour
     public Slider playerManaBar;
     public Slider bossHealthBar;
 
+    public Text playerStatField;
+    public Text bossStatField;
+
     private float _playerHP;
     private float _playerMana;
     private float _bossHP;
@@ -93,9 +96,30 @@ public class CombatManager : MonoBehaviour
 
     public void UpdateStatsUI()
     {
-        playerHealthBar.value = playerHP;
-        playerManaBar.value = playerMana;
-        bossHealthBar.value = bossHP;
+        string playerStatString = "ATK : " + playerCombat.attack;
+        if (_magicAttackCooldown > 0)
+        {
+            playerStatString += " + 5 = " + (playerCombat.attack + 5);
+        }
+        playerStatString += "\nDEF : " + playerCombat.defense;
+        if(_magicDefenseCooldown > 0)
+        {
+            playerStatString += " + 5 = " + (playerCombat.defense + 5);
+            if (_defenseCooldown > 0)
+            {
+                playerStatString += " * 2 = " + ((playerCombat.defense + 5) * 2);
+            }        
+        }
+        else
+        {
+            if (_defenseCooldown > 0)
+            {
+                playerStatString += " * 2 = " + (playerCombat.defense * 2);
+            }
+        }
+
+        playerStatField.text = playerStatString;
+        bossStatField.text = "ATK : " + boss.attack + "\nDEF : " + boss.defense;
     }
 
     private int _heavyAttackCooldown = 0;
@@ -105,6 +129,7 @@ public class CombatManager : MonoBehaviour
     private int _defenseCooldown = 0;
 
     public void StartPlayerTurn() {
+        
         if (_magicAttackCooldown > 0) {
             --_magicAttackCooldown;
             if (_magicAttackCooldown == 0) {
@@ -133,7 +158,7 @@ public class CombatManager : MonoBehaviour
             }
         }
         if (_defenseCooldown > 0) --_defenseCooldown;
-
+        
         if (_heavyAttackCooldown > 0) {
             --_heavyAttackCooldown;
             menuPanel.DisplayInfo($"Vous passez le tour à récupérer de l'attaque lourde...", () => {
@@ -141,7 +166,7 @@ public class CombatManager : MonoBehaviour
             });
             return;
         }
-
+        UpdateStatsUI();
         playerCombat.StartTurn();
     }
 
@@ -176,6 +201,7 @@ public class CombatManager : MonoBehaviour
 
             case PlayerCombat.Action.Defense:
                 _defenseCooldown = 1;
+                UpdateStatsUI();
                 menuPanel.DisplayInfo($"Vous vous préparez à défendre. (Défense x 2)", () => { boss.StartTurn(); });
                 break;
 
@@ -191,6 +217,7 @@ public class CombatManager : MonoBehaviour
                 }
                 playerMana -= 20;
                 _magicAttackCooldown = 3;
+                UpdateStatsUI();
                 menuPanel.DisplayInfo($"Vous devenez temporairement plus fort ! (Attaque + 5 pendant 2 tours)", () => { boss.StartTurn(); });
                 break;
 
@@ -200,6 +227,7 @@ public class CombatManager : MonoBehaviour
                     break;
                 }
                 _magicDefenseCooldown = 3;
+                UpdateStatsUI();
                 menuPanel.DisplayInfo($"Vous devenez temporairement plus résistant ! (Défense + 5 pendant 2 tours)", () => { boss.StartTurn(); });
                 break;
                 
@@ -209,6 +237,7 @@ public class CombatManager : MonoBehaviour
                     break;
                 }
                 _magicSpeedCooldown = 3;
+                UpdateStatsUI();
                 menuPanel.DisplayInfo($"Vous devenez temporairement plus rapide ! (Pas implémenté...)", () => { boss.StartTurn(); });
                 break;
                 

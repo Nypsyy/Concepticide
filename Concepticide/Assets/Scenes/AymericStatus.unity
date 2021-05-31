@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &280700466 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 280700466, guid: 11ffba29df14c054aa5a2695b18e9f59, type: 3}
+  m_PrefabInstance: {fileID: 524291855}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &471700343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -262,6 +273,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85d64847264aa4f15bdf5b39554883be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1232990550 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1232990550, guid: e218b66930d51a741a5150ddb1bfeec0, type: 3}
+  m_PrefabInstance: {fileID: 2098751107}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1242917869
@@ -484,6 +506,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1545691666, guid: e218b66930d51a741a5150ddb1bfeec0, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 2143071706}
     - target: {fileID: 1233347782355984, guid: e218b66930d51a741a5150ddb1bfeec0, type: 3}
       propertyPath: m_Name
       value: TradingBoss
@@ -715,3 +741,5 @@ MonoBehaviour:
   playerHealthBar: {fileID: 1622616011}
   playerManaBar: {fileID: 1347445802}
   bossHealthBar: {fileID: 1916028945}
+  playerStatField: {fileID: 280700466}
+  bossStatField: {fileID: 1232990550}
