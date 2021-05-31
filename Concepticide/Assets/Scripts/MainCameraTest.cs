@@ -19,6 +19,8 @@ public class MainCameraTest : MonoBehaviour
     public Slider playerManaBar;
     public Slider bossHealthBar;
 
+    public Text playerStatField;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +42,7 @@ public class MainCameraTest : MonoBehaviour
         newCombatManager.playerHealthBar = playerHealthBar;
         newCombatManager.playerManaBar = playerManaBar;
         newCombatManager.bossHealthBar = bossHealthBar;
+        newCombatManager.playerStatField = playerStatField;
         newCombatManager.endDelegate = (hasPlayerWon) => {
             _StartCombat(); // doing combat forever in this case
         };
