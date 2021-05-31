@@ -5,24 +5,55 @@ using UnityEngine;
 public class Concept : MonoBehaviour
 {
 
-    public Material natureMaterial0;
-    public Material natureMaterial1;
+    public Material[] m_Nature;
+    public Material m_NatureMaterial0;
+    public Material m_NatureMaterial1;
+    private GameObject[] m_ToHide;
 
 
     void Start()
     {
-        natureMaterial0.SetColor("_Color", new Color(0.8f,0.3f,0.3f));
-        natureMaterial1.SetColor("_Color", new Color(0.8f,0.35f,0.35f));
+        if (m_ToHide == null)
+            m_ToHide = GameObject.FindGameObjectsWithTag("Nature");
+        Nature(false);
+        
     }
     
-    // Update is called once per frame
     void Update()
     {
+        
     }
 
     void OnApplicationQuit()
     {
-        natureMaterial0.SetColor("_Color", new Color(1f,1f,1f));
-        natureMaterial1.SetColor("_Color", new Color(1f,1f,1f));
+        Nature(true);
+    }
+
+    void Nature(bool mode)
+    {
+        if (mode)
+        {
+            m_Nature[0].SetColor("_Color", new Color(1f,1f,1f));
+            m_Nature[1].SetColor("_Color", new Color(1f,1f,1f));
+            m_Nature[2].SetColor("_Color", new Color(1f,1f,1f));
+            
+            foreach (GameObject toHide in m_ToHide)
+            {
+                toHide.SetActive(true);
+            }
+            
+        }
+
+        else
+        {
+            m_Nature[0].SetColor("_Color", new Color(0.8f,0.3f,0.3f));
+            m_Nature[1].SetColor("_Color", new Color(0.8f,0.35f,0.35f));
+            m_Nature[2].SetColor("_Color", new Color(0.8f,0.35f,0.35f));
+            
+            foreach (GameObject toHide in m_ToHide)
+            {
+                toHide.SetActive(false);
+            }
+        }
     }
 }
