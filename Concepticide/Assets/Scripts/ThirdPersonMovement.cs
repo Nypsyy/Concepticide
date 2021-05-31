@@ -4,7 +4,6 @@ using static Utils;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
-    private Actions _playerActions;
     public CharacterController controller;
     public Animator animator;
     public Transform cam;
@@ -15,7 +14,7 @@ public class ThirdPersonMovement : MonoBehaviour
     private bool justTeleported;
 
     private void Move() {
-        var moveDirection = _playerActions.Player.Move.ReadValue<Vector2>().normalized;
+        var moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
 
         if (moveDirection.magnitude >= 0.1f) {
             var targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.y) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -26,25 +25,11 @@ public class ThirdPersonMovement : MonoBehaviour
             controller.Move(moveDir.normalized * (speed * Time.deltaTime));
             /*animator.SetFloat("Direction x", moveDir.x);
             animator.SetFloat("Direction z", moveDir.z);*/
-            
+
             animator.SetBool(AnimVariables.IsRunning, true);
         }
-
         else
             animator.SetBool(AnimVariables.IsRunning, false);
-    }
-
-
-    private void Awake() {
-        _playerActions = new Actions();
-    }
-
-    private void OnEnable() {
-        _playerActions.Enable();
-    }
-
-    private void OnDisable() {
-        _playerActions.Disable();
     }
 
     private void Update() => Move();
