@@ -20,6 +20,7 @@ public class CombatManager : MonoBehaviour
     public Slider bossHealthBar;
 
     public Text playerStatField;
+    public Text bossStatField;
 
     private float _playerHP;
     private float _playerMana;
@@ -118,6 +119,7 @@ public class CombatManager : MonoBehaviour
         }
 
         playerStatField.text = playerStatString;
+        bossStatField.text = "ATK : " + boss.attack + "\nDEF : " + boss.defense;
     }
 
     private int _heavyAttackCooldown = 0;
