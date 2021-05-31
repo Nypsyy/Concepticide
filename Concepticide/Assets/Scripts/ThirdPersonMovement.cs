@@ -1,48 +1,51 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
+using static Utils;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
+    private Actions _playerActions;
     public CharacterController controller;
     public Animator animator;
     public Transform cam;
     public float speed = 6f;
+    public float turnSmoothTime = 0.1f;
+    public float turnSmoothVelocity;
 
     private bool justTeleported;
 
-    public float turnSmoothTime = 0.1f;
-    public float turnSmoothVelocity;
-    
-    // Update is called once per    
-    void Update()
-    {
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
+    private void Move() {
+        var moveDirection = _playerActions.Player.Move.ReadValue<Vector2>().normalized;
 
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+        if (moveDirection.magnitude >= 0.1f) {
+            var targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.y) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-        if (direction.magnitude >= 0.1f)
-        {
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f,angle, 0f);
-
-            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            var moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            controller.Move(moveDir.normalized * (speed * Time.deltaTime));
             /*animator.SetFloat("Direction x", moveDir.x);
             animator.SetFloat("Direction z", moveDir.z);*/
-
-            animator.SetBool("isRunning", true);
+            
+            animator.SetBool(AnimVariables.IsRunning, true);
         }
+
         else
-        {
-            animator.SetBool("isRunning", false);
-
-            /*animator.SetFloat("Direction x", 0);
-            animator.SetFloat("Direction z", 0);*/
-        }
-
-        
+            animator.SetBool(AnimVariables.IsRunning, false);
     }
+
+
+    private void Awake() {
+        _playerActions = new Actions();
+    }
+
+    private void OnEnable() {
+        _playerActions.Enable();
+    }
+
+    private void OnDisable() {
+        _playerActions.Disable();
+    }
+
+    private void Update() => Move();
 }
