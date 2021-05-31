@@ -2914,11 +2914,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue1:
-    name: Marligou
+    name: Marchand
     sentences:
-    - Je suis un marligou.
-    - Un vrai de vrai.
-    - Comme Sylvain !
+    - 'Bonjour ! '
+    - Voici ma marchandise.
+    - Au revoir.
 --- !u!65 &1543952096
 BoxCollider:
   m_ObjectHideFlags: 0
