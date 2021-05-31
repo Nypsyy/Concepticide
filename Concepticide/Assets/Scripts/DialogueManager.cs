@@ -18,7 +18,7 @@ public class DialogueManager : MonoBehaviour
     public void StartDialogue(Dialogue dialogue)
     {
         Debug.Log("Strating conversation with " + dialogue.name);
-        animator.SetBool("IsOpen", true);
+        animator.SetBool("isOpen", true);
         nameText.text = dialogue.name;
 
         sentences.Clear();
@@ -47,7 +47,7 @@ public class DialogueManager : MonoBehaviour
     public void EndDialogue()
     {
         Debug.Log("end of conversation");
-        animator.SetBool("IsOpen", false);
+        animator.SetBool("isOpen", false);
     }
 
     IEnumerator TypeSentence (string sentence)
