@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using static Utils;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
@@ -13,36 +12,31 @@ public class ThirdPersonMovement : MonoBehaviour
 
     public float turnSmoothTime = 0.1f;
     public float turnSmoothVelocity;
-    
+
     // Update is called once per    
-    void Update()
-    {
+    void Update() {
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
         Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        if (direction.magnitude >= 0.1f)
-        {
+        if (direction.magnitude >= 0.1f) {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f,angle, 0f);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            controller.Move(moveDir.normalized * (speed * Time.deltaTime));
             /*animator.SetFloat("Direction x", moveDir.x);
             animator.SetFloat("Direction z", moveDir.z);*/
 
-            animator.SetBool("isRunning", true);
+            animator.SetBool(AnimVariables.IsRunning, true);
         }
-        else
-        {
-            animator.SetBool("isRunning", false);
+        else {
+            animator.SetBool(AnimVariables.IsRunning, false);
 
             /*animator.SetFloat("Direction x", 0);
             animator.SetFloat("Direction z", 0);*/
         }
-
-        
     }
 }
