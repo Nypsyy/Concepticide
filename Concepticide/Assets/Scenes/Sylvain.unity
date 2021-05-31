@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Plant_01
       objectReference: {fileID: 0}
+    - target: {fileID: 145914, guid: d7a915fb0c1dc1b4dab87d1268965a0e, type: 3}
+      propertyPath: m_TagString
+      value: Nature
+      objectReference: {fileID: 0}
     - target: {fileID: 423238, guid: d7a915fb0c1dc1b4dab87d1268965a0e, type: 3}
       propertyPath: m_RootOrder
       value: 150
@@ -932,6 +936,10 @@ PrefabInstance:
     - target: {fileID: 1466427836474396, guid: 5bd70a33951586a43a423d1366da97c0, type: 3}
       propertyPath: m_Name
       value: SM_Plant_Bush_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466427836474396, guid: 5bd70a33951586a43a423d1366da97c0, type: 3}
+      propertyPath: m_TagString
+      value: Nature
       objectReference: {fileID: 0}
     - target: {fileID: 4387668440234660, guid: 5bd70a33951586a43a423d1366da97c0, type: 3}
       propertyPath: m_RootOrder
@@ -2647,6 +2655,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Plant_Bush_03 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1358660975821336, guid: a809e9c4d33e83f4fa8408a33b72eaf9, type: 3}
+      propertyPath: m_TagString
+      value: Nature
+      objectReference: {fileID: 0}
     - target: {fileID: 4500090590442396, guid: a809e9c4d33e83f4fa8408a33b72eaf9, type: 3}
       propertyPath: m_RootOrder
       value: 93
@@ -3050,6 +3062,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Plant_01 (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 145914, guid: d7a915fb0c1dc1b4dab87d1268965a0e, type: 3}
+      propertyPath: m_TagString
+      value: Nature
+      objectReference: {fileID: 0}
     - target: {fileID: 423238, guid: d7a915fb0c1dc1b4dab87d1268965a0e, type: 3}
       propertyPath: m_RootOrder
       value: 159
@@ -3118,6 +3134,10 @@ PrefabInstance:
     - target: {fileID: 1466427836474396, guid: 5bd70a33951586a43a423d1366da97c0, type: 3}
       propertyPath: m_Name
       value: SM_Plant_Bush_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466427836474396, guid: 5bd70a33951586a43a423d1366da97c0, type: 3}
+      propertyPath: m_TagString
+      value: Nature
       objectReference: {fileID: 0}
     - target: {fileID: 4387668440234660, guid: 5bd70a33951586a43a423d1366da97c0, type: 3}
       propertyPath: m_RootOrder
@@ -3639,6 +3659,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Plant_Bush_01 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1153903725125606, guid: 7f253e36a99c6454e9f631317cb450b9, type: 3}
+      propertyPath: m_TagString
+      value: Nature
+      objectReference: {fileID: 0}
     - target: {fileID: 4183202509123876, guid: 7f253e36a99c6454e9f631317cb450b9, type: 3}
       propertyPath: m_RootOrder
       value: 88
@@ -3782,7 +3806,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 447761160}
-  m_LocalRotation: {x: -0.1367887, y: 0.85083574, z: -0.2716302, w: -0.42846757}
+  m_LocalRotation: {x: -0.13678871, y: 0.85083574, z: -0.27163023, w: -0.42846754}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -3940,7 +3964,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 458887405}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3213439, y: 23.108156, z: -52.888866}
+  m_LocalPosition: {x: -1.3213441, y: 23.108156, z: -52.888866}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2018649377}
@@ -4688,6 +4712,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Plant_Bush_02 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1466427836474396, guid: 5bd70a33951586a43a423d1366da97c0, type: 3}
+      propertyPath: m_TagString
+      value: Nature
+      objectReference: {fileID: 0}
     - target: {fileID: 4387668440234660, guid: 5bd70a33951586a43a423d1366da97c0, type: 3}
       propertyPath: m_RootOrder
       value: 123
@@ -4873,6 +4901,10 @@ PrefabInstance:
     - target: {fileID: 1884413432939730, guid: 0cf4a00378953af4789117036429a8c6, type: 3}
       propertyPath: m_Name
       value: SM_Plant_Lillypad_Large_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1884413432939730, guid: 0cf4a00378953af4789117036429a8c6, type: 3}
+      propertyPath: m_TagString
+      value: Nature
       objectReference: {fileID: 0}
     - target: {fileID: 4592108662704944, guid: 0cf4a00378953af4789117036429a8c6, type: 3}
       propertyPath: m_RootOrder
@@ -5296,6 +5328,10 @@ PrefabInstance:
     - target: {fileID: 110038, guid: cc7144ff9653031498f244b1df8c8fa9, type: 3}
       propertyPath: m_Name
       value: SM_Env_Plant_02 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 110038, guid: cc7144ff9653031498f244b1df8c8fa9, type: 3}
+      propertyPath: m_TagString
+      value: Nature
       objectReference: {fileID: 0}
     - target: {fileID: 413014, guid: cc7144ff9653031498f244b1df8c8fa9, type: 3}
       propertyPath: m_RootOrder
@@ -5949,6 +5985,10 @@ PrefabInstance:
     - target: {fileID: 1153903725125606, guid: 7f253e36a99c6454e9f631317cb450b9, type: 3}
       propertyPath: m_Name
       value: SM_Plant_Bush_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153903725125606, guid: 7f253e36a99c6454e9f631317cb450b9, type: 3}
+      propertyPath: m_TagString
+      value: Nature
       objectReference: {fileID: 0}
     - target: {fileID: 4183202509123876, guid: 7f253e36a99c6454e9f631317cb450b9, type: 3}
       propertyPath: m_RootOrder
@@ -6973,6 +7013,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Plant_Bush_02
       objectReference: {fileID: 0}
+    - target: {fileID: 1466427836474396, guid: 5bd70a33951586a43a423d1366da97c0, type: 3}
+      propertyPath: m_TagString
+      value: Nature
+      objectReference: {fileID: 0}
     - target: {fileID: 4387668440234660, guid: 5bd70a33951586a43a423d1366da97c0, type: 3}
       propertyPath: m_RootOrder
       value: 64
@@ -7609,6 +7653,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Plant_Hedge_Bush_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1571884418503298, guid: 5443f442824346441b5af0d84ae05120, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4034673564863644, guid: 5443f442824346441b5af0d84ae05120, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -7818,8 +7866,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1032281876}
-  m_LocalRotation: {x: -0.14887033, y: 0.8428004, z: -0.2956214, w: -0.42442104}
-  m_LocalPosition: {x: -1.3213439, y: 23.108156, z: -52.888866}
+  m_LocalRotation: {x: -0.14887029, y: 0.8428004, z: -0.29562142, w: -0.42442095}
+  m_LocalPosition: {x: -1.3213441, y: 23.108156, z: -52.888866}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -7888,6 +7936,10 @@ PrefabInstance:
     - target: {fileID: 1121632204772480, guid: bad3ddcb570876641a79193c07d20684, type: 3}
       propertyPath: m_Name
       value: SM_Tree_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 1121632204772480, guid: bad3ddcb570876641a79193c07d20684, type: 3}
+      propertyPath: m_TagString
+      value: Nature
       objectReference: {fileID: 0}
     - target: {fileID: 4989679614359530, guid: bad3ddcb570876641a79193c07d20684, type: 3}
       propertyPath: m_RootOrder
@@ -8019,6 +8071,10 @@ PrefabInstance:
     - target: {fileID: 145914, guid: d7a915fb0c1dc1b4dab87d1268965a0e, type: 3}
       propertyPath: m_Name
       value: SM_Env_Plant_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 145914, guid: d7a915fb0c1dc1b4dab87d1268965a0e, type: 3}
+      propertyPath: m_TagString
+      value: Nature
       objectReference: {fileID: 0}
     - target: {fileID: 423238, guid: d7a915fb0c1dc1b4dab87d1268965a0e, type: 3}
       propertyPath: m_RootOrder
@@ -8821,6 +8877,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Plant_01 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 145914, guid: d7a915fb0c1dc1b4dab87d1268965a0e, type: 3}
+      propertyPath: m_TagString
+      value: Nature
+      objectReference: {fileID: 0}
     - target: {fileID: 423238, guid: d7a915fb0c1dc1b4dab87d1268965a0e, type: 3}
       propertyPath: m_RootOrder
       value: 161
@@ -8889,6 +8949,10 @@ PrefabInstance:
     - target: {fileID: 1571884418503298, guid: 5443f442824346441b5af0d84ae05120, type: 3}
       propertyPath: m_Name
       value: SM_Plant_Hedge_Bush_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571884418503298, guid: 5443f442824346441b5af0d84ae05120, type: 3}
+      propertyPath: m_TagString
+      value: Nature
       objectReference: {fileID: 0}
     - target: {fileID: 4034673564863644, guid: 5443f442824346441b5af0d84ae05120, type: 3}
       propertyPath: m_RootOrder
@@ -9505,6 +9569,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Plant_Bush_03
       objectReference: {fileID: 0}
+    - target: {fileID: 1358660975821336, guid: a809e9c4d33e83f4fa8408a33b72eaf9, type: 3}
+      propertyPath: m_TagString
+      value: Nature
+      objectReference: {fileID: 0}
     - target: {fileID: 4500090590442396, guid: a809e9c4d33e83f4fa8408a33b72eaf9, type: 3}
       propertyPath: m_RootOrder
       value: 67
@@ -9858,6 +9926,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Plant_Hedge_Bush_02
       objectReference: {fileID: 0}
+    - target: {fileID: 1643185210228196, guid: ff1550cb31a102946acb96cce0715c7a, type: 3}
+      propertyPath: m_TagString
+      value: Nature
+      objectReference: {fileID: 0}
     - target: {fileID: 4657098212382554, guid: ff1550cb31a102946acb96cce0715c7a, type: 3}
       propertyPath: m_RootOrder
       value: 65
@@ -9931,6 +10003,10 @@ PrefabInstance:
     - target: {fileID: 1358660975821336, guid: a809e9c4d33e83f4fa8408a33b72eaf9, type: 3}
       propertyPath: m_Name
       value: SM_Plant_Bush_03 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358660975821336, guid: a809e9c4d33e83f4fa8408a33b72eaf9, type: 3}
+      propertyPath: m_TagString
+      value: Nature
       objectReference: {fileID: 0}
     - target: {fileID: 4500090590442396, guid: a809e9c4d33e83f4fa8408a33b72eaf9, type: 3}
       propertyPath: m_RootOrder
@@ -10192,6 +10268,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Plant_Bush_03 (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1358660975821336, guid: a809e9c4d33e83f4fa8408a33b72eaf9, type: 3}
+      propertyPath: m_TagString
+      value: Nature
+      objectReference: {fileID: 0}
     - target: {fileID: 4500090590442396, guid: a809e9c4d33e83f4fa8408a33b72eaf9, type: 3}
       propertyPath: m_RootOrder
       value: 121
@@ -10265,6 +10345,10 @@ PrefabInstance:
     - target: {fileID: 1153903725125606, guid: 7f253e36a99c6454e9f631317cb450b9, type: 3}
       propertyPath: m_Name
       value: SM_Plant_Bush_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153903725125606, guid: 7f253e36a99c6454e9f631317cb450b9, type: 3}
+      propertyPath: m_TagString
+      value: Nature
       objectReference: {fileID: 0}
     - target: {fileID: 4183202509123876, guid: 7f253e36a99c6454e9f631317cb450b9, type: 3}
       propertyPath: m_RootOrder
@@ -11019,6 +11103,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Tree_04 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1121632204772480, guid: bad3ddcb570876641a79193c07d20684, type: 3}
+      propertyPath: m_TagString
+      value: Nature
+      objectReference: {fileID: 0}
     - target: {fileID: 4989679614359530, guid: bad3ddcb570876641a79193c07d20684, type: 3}
       propertyPath: m_RootOrder
       value: 163
@@ -11555,6 +11643,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Plant_Lillypad_Large_03
       objectReference: {fileID: 0}
+    - target: {fileID: 1548272104594318, guid: 9e88ad7dd5a09ec43bfda87e159fe5c2, type: 3}
+      propertyPath: m_TagString
+      value: Nature
+      objectReference: {fileID: 0}
     - target: {fileID: 4400851210054052, guid: 9e88ad7dd5a09ec43bfda87e159fe5c2, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -11697,6 +11789,10 @@ PrefabInstance:
     - target: {fileID: 1358660975821336, guid: a809e9c4d33e83f4fa8408a33b72eaf9, type: 3}
       propertyPath: m_Name
       value: SM_Plant_Bush_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358660975821336, guid: a809e9c4d33e83f4fa8408a33b72eaf9, type: 3}
+      propertyPath: m_TagString
+      value: Nature
       objectReference: {fileID: 0}
     - target: {fileID: 4500090590442396, guid: a809e9c4d33e83f4fa8408a33b72eaf9, type: 3}
       propertyPath: m_RootOrder
@@ -12090,6 +12186,10 @@ PrefabInstance:
     - target: {fileID: 1358660975821336, guid: a809e9c4d33e83f4fa8408a33b72eaf9, type: 3}
       propertyPath: m_Name
       value: SM_Plant_Bush_03 (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358660975821336, guid: a809e9c4d33e83f4fa8408a33b72eaf9, type: 3}
+      propertyPath: m_TagString
+      value: Nature
       objectReference: {fileID: 0}
     - target: {fileID: 4500090590442396, guid: a809e9c4d33e83f4fa8408a33b72eaf9, type: 3}
       propertyPath: m_RootOrder
@@ -12763,7 +12863,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 1623349973}
+  animator: {fileID: 0}
+  cam: {fileID: 0}
   speed: 6
+  turnSmoothTime: 0.1
+  turnSmoothVelocity: 0
 --- !u!143 &1623349973
 CharacterController:
   m_ObjectHideFlags: 0
@@ -12885,6 +12989,10 @@ PrefabInstance:
     - target: {fileID: 1153903725125606, guid: 7f253e36a99c6454e9f631317cb450b9, type: 3}
       propertyPath: m_Name
       value: SM_Plant_Bush_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153903725125606, guid: 7f253e36a99c6454e9f631317cb450b9, type: 3}
+      propertyPath: m_TagString
+      value: Nature
       objectReference: {fileID: 0}
     - target: {fileID: 4183202509123876, guid: 7f253e36a99c6454e9f631317cb450b9, type: 3}
       propertyPath: m_RootOrder
@@ -13122,6 +13230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Tree_Round_01
       objectReference: {fileID: 0}
+    - target: {fileID: 1646885935188752, guid: dafad5d52cd284f4b8229a896f9a966f, type: 3}
+      propertyPath: m_TagString
+      value: Nature
+      objectReference: {fileID: 0}
     - target: {fileID: 4196735912448918, guid: dafad5d52cd284f4b8229a896f9a966f, type: 3}
       propertyPath: m_RootOrder
       value: 22
@@ -13195,6 +13307,10 @@ PrefabInstance:
     - target: {fileID: 1358660975821336, guid: a809e9c4d33e83f4fa8408a33b72eaf9, type: 3}
       propertyPath: m_Name
       value: SM_Plant_Bush_03 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1358660975821336, guid: a809e9c4d33e83f4fa8408a33b72eaf9, type: 3}
+      propertyPath: m_TagString
+      value: Nature
       objectReference: {fileID: 0}
     - target: {fileID: 4500090590442396, guid: a809e9c4d33e83f4fa8408a33b72eaf9, type: 3}
       propertyPath: m_RootOrder
@@ -13836,6 +13952,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Plant_02 (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 110038, guid: cc7144ff9653031498f244b1df8c8fa9, type: 3}
+      propertyPath: m_TagString
+      value: Nature
+      objectReference: {fileID: 0}
     - target: {fileID: 413014, guid: cc7144ff9653031498f244b1df8c8fa9, type: 3}
       propertyPath: m_RootOrder
       value: 162
@@ -14049,6 +14169,10 @@ PrefabInstance:
     - target: {fileID: 1466427836474396, guid: 5bd70a33951586a43a423d1366da97c0, type: 3}
       propertyPath: m_Name
       value: SM_Plant_Bush_02 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1466427836474396, guid: 5bd70a33951586a43a423d1366da97c0, type: 3}
+      propertyPath: m_TagString
+      value: Nature
       objectReference: {fileID: 0}
     - target: {fileID: 4387668440234660, guid: 5bd70a33951586a43a423d1366da97c0, type: 3}
       propertyPath: m_RootOrder
@@ -14662,6 +14786,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Flower_05
       objectReference: {fileID: 0}
+    - target: {fileID: 185154, guid: bd797f8b461dda044840c3a0bd197fe7, type: 3}
+      propertyPath: m_TagString
+      value: Nature
+      objectReference: {fileID: 0}
     - target: {fileID: 433594, guid: bd797f8b461dda044840c3a0bd197fe7, type: 3}
       propertyPath: m_RootOrder
       value: 152
@@ -14843,6 +14971,10 @@ PrefabInstance:
     - target: {fileID: 110038, guid: cc7144ff9653031498f244b1df8c8fa9, type: 3}
       propertyPath: m_Name
       value: SM_Env_Plant_02 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 110038, guid: cc7144ff9653031498f244b1df8c8fa9, type: 3}
+      propertyPath: m_TagString
+      value: Nature
       objectReference: {fileID: 0}
     - target: {fileID: 413014, guid: cc7144ff9653031498f244b1df8c8fa9, type: 3}
       propertyPath: m_RootOrder
@@ -15129,6 +15261,10 @@ PrefabInstance:
     - target: {fileID: 1646885935188752, guid: dafad5d52cd284f4b8229a896f9a966f, type: 3}
       propertyPath: m_Name
       value: SM_Tree_Round_01 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1646885935188752, guid: dafad5d52cd284f4b8229a896f9a966f, type: 3}
+      propertyPath: m_TagString
+      value: Nature
       objectReference: {fileID: 0}
     - target: {fileID: 4196735912448918, guid: dafad5d52cd284f4b8229a896f9a966f, type: 3}
       propertyPath: m_RootOrder
@@ -15826,6 +15962,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Env_Plant_02
       objectReference: {fileID: 0}
+    - target: {fileID: 110038, guid: cc7144ff9653031498f244b1df8c8fa9, type: 3}
+      propertyPath: m_TagString
+      value: Nature
+      objectReference: {fileID: 0}
     - target: {fileID: 413014, guid: cc7144ff9653031498f244b1df8c8fa9, type: 3}
       propertyPath: m_RootOrder
       value: 151
@@ -16012,7 +16152,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2018649375}
-  m_LocalRotation: {x: -0.15226254, y: 0.84040725, z: -0.3023575, w: -0.42321602}
+  m_LocalRotation: {x: -0.1522625, y: 0.8404073, z: -0.3023575, w: -0.42321593}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -16147,6 +16287,10 @@ PrefabInstance:
     - target: {fileID: 1467454332595294, guid: fe8147825b813cf46b4ef685a3ea56a8, type: 3}
       propertyPath: m_Name
       value: SM_Tree_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 1467454332595294, guid: fe8147825b813cf46b4ef685a3ea56a8, type: 3}
+      propertyPath: m_TagString
+      value: Nature
       objectReference: {fileID: 0}
     - target: {fileID: 4428525224070040, guid: fe8147825b813cf46b4ef685a3ea56a8, type: 3}
       propertyPath: m_RootOrder
@@ -16681,6 +16825,10 @@ PrefabInstance:
     - target: {fileID: 1571884418503298, guid: 5443f442824346441b5af0d84ae05120, type: 3}
       propertyPath: m_Name
       value: SM_Plant_Hedge_Bush_01 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1571884418503298, guid: 5443f442824346441b5af0d84ae05120, type: 3}
+      propertyPath: m_TagString
+      value: Nature
       objectReference: {fileID: 0}
     - target: {fileID: 4034673564863644, guid: 5443f442824346441b5af0d84ae05120, type: 3}
       propertyPath: m_RootOrder
