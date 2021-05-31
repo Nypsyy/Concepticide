@@ -1,27 +1,24 @@
+using System;
 using UnityEngine;
 using static Utils;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
+    private Actions _playerActions;
     public CharacterController controller;
     public Animator animator;
     public Transform cam;
     public float speed = 6f;
-
-    private bool justTeleported;
-
     public float turnSmoothTime = 0.1f;
     public float turnSmoothVelocity;
 
-    // Update is called once per    
-    void Update() {
-        var horizontal = Input.GetAxisRaw("Horizontal");
-        var vertical = Input.GetAxisRaw("Vertical");
+    private bool justTeleported;
 
-        var direction = new Vector3(horizontal, 0f, vertical).normalized;
+    private void Move() {
+        var moveDirection = _playerActions.Player.Move.ReadValue<Vector2>().normalized;
 
-        if (direction.magnitude >= 0.1f) {
-            var targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+        if (moveDirection.magnitude >= 0.1f) {
+            var targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.y) * Mathf.Rad2Deg + cam.eulerAngles.y;
             var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
             transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
@@ -29,14 +26,26 @@ public class ThirdPersonMovement : MonoBehaviour
             controller.Move(moveDir.normalized * (speed * Time.deltaTime));
             /*animator.SetFloat("Direction x", moveDir.x);
             animator.SetFloat("Direction z", moveDir.z);*/
-
+            
             animator.SetBool(AnimVariables.IsRunning, true);
         }
-        else {
-            animator.SetBool(AnimVariables.IsRunning, false);
 
-            /*animator.SetFloat("Direction x", 0);
-            animator.SetFloat("Direction z", 0);*/
-        }
+        else
+            animator.SetBool(AnimVariables.IsRunning, false);
     }
+
+
+    private void Awake() {
+        _playerActions = new Actions();
+    }
+
+    private void OnEnable() {
+        _playerActions.Enable();
+    }
+
+    private void OnDisable() {
+        _playerActions.Disable();
+    }
+
+    private void Update() => Move();
 }
