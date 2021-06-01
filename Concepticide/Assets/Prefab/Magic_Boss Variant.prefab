@@ -129,7 +129,7 @@ MonoBehaviour:
   bossName: Magie
   hp: 100
   attack: 30
-  defense: 10
+  defense: 5
   speed: 0
   attacks: []
   stats: {fileID: 9155656628112681438}

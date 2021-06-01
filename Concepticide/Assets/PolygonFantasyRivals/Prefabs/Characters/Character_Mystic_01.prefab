@@ -1947,7 +1947,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossName: Commerce
   hp: 100
-  attack: 15
+  attack: 25
   defense: 10
   speed: 1
   attacks:

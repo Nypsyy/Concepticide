@@ -154,6 +154,33 @@ public class CombatManager : MonoBehaviour
         playerCombat.StartTurn();
     }
 
+    public void EndBossTurn(Boss.Action action) {
+        switch (action) {
+            case Boss.Action.Attack:
+                float defense = playerCombat.defense;
+                if (_magicDefenseCooldown > 0) defense += 5;
+                if (_defenseCooldown > 0) defense *= 2;
+                float damage = boss.attack - defense;
+                if (damage < 0) damage = 0;
+                playerHP = Mathf.Max(0, playerHP - damage);
+                menuPanel.DisplayInfo($"Le {boss.bossName} vous attaque et vous inflige {damage} dégâts !", () => {
+                    if (playerHP == 0) {
+                        menuPanel.DisplayInfo($"Vous avez été tué...", () => {
+                            menuPanel.enabled = false;
+                            playerCombat.StopCombat();
+                            boss.StopCombat();
+                            gameObject.SetActive(false);
+                            if (endDelegate != null)
+                                endDelegate(false); // hasPlayerWon = false;
+                        });
+                    } else {
+                        StartPlayerTurn();
+                    }
+                });
+                break;
+        }
+    }
+
     // PlayerCombat est responsable d'appeler cette méthode à la fin de son tour
     public void EndPlayerTurn(PlayerCombat.Action action) {
         switch (action) {
@@ -203,7 +230,7 @@ public class CombatManager : MonoBehaviour
                     menuPanel.DisplayInfo($"Vous n'avez pas assez de mana !", () => { playerCombat.StartTurn(); });
                     break;
                 }
-                playerMana -= 20;
+                playerMana -= 30;
                 _magicAttackCooldown = 3;
                 UpdateStatsUI();
                 menuPanel.DisplayInfo($"Vous devenez temporairement plus fort ! (Attaque + 5 pendant 2 tours)", () => { boss.StartTurn(); });
@@ -214,6 +241,7 @@ public class CombatManager : MonoBehaviour
                     menuPanel.DisplayInfo($"Vous n'avez pas assez de mana !", () => { playerCombat.StartTurn(); });
                     break;
                 }
+                playerMana -= 30;
                 _magicDefenseCooldown = 3;
                 UpdateStatsUI();
                 menuPanel.DisplayInfo($"Vous devenez temporairement plus résistant ! (Défense + 5 pendant 2 tours)", () => { boss.StartTurn(); });
@@ -224,6 +252,7 @@ public class CombatManager : MonoBehaviour
                     menuPanel.DisplayInfo($"Vous n'avez pas assez de mana !", () => { playerCombat.StartTurn(); });
                     break;
                 }
+                playerMana -= 30;
                 _magicSpeedCooldown = 3;
                 UpdateStatsUI();
                 menuPanel.DisplayInfo($"Vous devenez temporairement plus rapide ! (Pas implémenté...)", () => { boss.StartTurn(); });

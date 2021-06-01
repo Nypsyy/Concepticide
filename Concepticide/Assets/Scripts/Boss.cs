@@ -13,6 +13,8 @@ public class Boss : MonoBehaviour
     public Slider healthBar;
     public Text statField;
 
+    public enum Action { Attack };
+
     private CombatManager _combatManager;
 
     // Start is called before the first frame update
@@ -37,8 +39,6 @@ public class Boss : MonoBehaviour
 
 
     public void StartTurn() {
-        _combatManager.menuPanel.DisplayInfo("Le boss ne fait rien (ses attaques ne sont pas implémentées).", () => {
-            _combatManager.StartPlayerTurn();
-        });
+        _combatManager.EndBossTurn(Action.Attack);
     }
 }
