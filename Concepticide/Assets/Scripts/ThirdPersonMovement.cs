@@ -6,6 +6,8 @@ public class ThirdPersonMovement : MonoBehaviour
     public CharacterController controller;
     public Animator animator;
     public Transform cam;
+
+    public bool allowMove = true;
     
     [SerializeField]
     private float speed = 6f;
@@ -22,7 +24,7 @@ public class ThirdPersonMovement : MonoBehaviour
     }
 
     private void Move() {
-        var moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        Vector3 moveDirection = allowMove ? new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")) : Vector3.zero;
 
         if (moveDirection.magnitude >= 0.1f) {
             var targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg + cam.eulerAngles.y;

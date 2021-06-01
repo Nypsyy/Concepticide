@@ -14,7 +14,9 @@ public class BossArena : MonoBehaviour
 
     public GameObject tpPlayer;
     public GameObject tpBoss;
+    public GameObject tpSpawn;
 
+    public Concept concept;
 
 
     // Start is called before the first frame update
@@ -39,17 +41,25 @@ public class BossArena : MonoBehaviour
         }
         boss.transform.position = tpBoss.transform.position;
         boss.transform.rotation = tpBoss.transform.rotation;
+        boss.gameObject.SetActive(true);
 
-        Debug.Log(playerCombat.transform.position);
         playerCombat.transform.position = tpPlayer.transform.position;
         playerCombat.transform.rotation = tpPlayer.transform.rotation;
-        //playerCombat.gameObject.GetComponent<ThirdPersonMovement>().enabled = false;
+        playerCombat.gameObject.GetComponent<ThirdPersonMovement>().allowMove = false;
         playerCombat.gameObject.GetComponent<CharacterController>().enabled = false;
-        Debug.Log(playerCombat.transform.position);
-        Debug.Log(playerCombat);
         
         combatManager.boss = boss;
         combatManager.playerCombat = playerCombat;
+        combatManager.endDelegate = (hasPlayerWon) => {
+            if (hasPlayerWon && concept != null)
+                concept.KillConcept(bossId);
+            boss.gameObject.SetActive(false);
+            playerCombat.transform.position = tpSpawn.transform.position;
+            playerCombat.transform.rotation = tpSpawn.transform.rotation;
+            playerCombat.gameObject.GetComponent<ThirdPersonMovement>().allowMove = true;
+            playerCombat.gameObject.GetComponent<CharacterController>().enabled = true;
+        };
+
 
         combatManager.gameObject.SetActive(true);
         combatManager.StartCombat();
