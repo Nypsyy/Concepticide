@@ -100,9 +100,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossName: Nature
-  hp: 100
+  hp: 150
   attack: 10
-  defense: 5
+  defense: 15
   speed: 5
   attacks: []
   stats: {fileID: 8924499381123301407}

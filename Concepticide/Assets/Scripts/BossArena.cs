@@ -16,6 +16,8 @@ public class BossArena : MonoBehaviour
     public GameObject tpBoss;
     public GameObject tpSpawn;
 
+    public GameObject thirdPersonCamera;
+
     public Concept concept;
 
 
@@ -43,14 +45,17 @@ public class BossArena : MonoBehaviour
         boss.transform.rotation = tpBoss.transform.rotation;
         boss.gameObject.SetActive(true);
 
-        playerCombat.transform.position = tpPlayer.transform.position;
-        playerCombat.transform.rotation = tpPlayer.transform.rotation;
+        // Setup the player by disabling movements and then teleporting
         playerCombat.gameObject.GetComponent<ThirdPersonMovement>().allowMove = false;
         playerCombat.gameObject.GetComponent<CharacterController>().enabled = false;
+        thirdPersonCamera.SetActive(false);
+        playerCombat.transform.position = tpPlayer.transform.position;
+        playerCombat.transform.rotation = tpPlayer.transform.rotation;
         
         combatManager.boss = boss;
         combatManager.playerCombat = playerCombat;
         combatManager.endDelegate = (hasPlayerWon) => {
+            // This code is executed when the combat has stopped.
             if (hasPlayerWon && concept != null)
                 concept.KillConcept(bossId);
             boss.gameObject.SetActive(false);
@@ -58,10 +63,9 @@ public class BossArena : MonoBehaviour
             playerCombat.transform.rotation = tpSpawn.transform.rotation;
             playerCombat.gameObject.GetComponent<ThirdPersonMovement>().allowMove = true;
             playerCombat.gameObject.GetComponent<CharacterController>().enabled = true;
+            thirdPersonCamera.SetActive(true);
         };
 
-
-        combatManager.gameObject.SetActive(true);
         combatManager.StartCombat();
     }
 }

@@ -56,13 +56,11 @@ public class CombatManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("update cm");
         
     }
     public void StartCombat() {
+        gameObject.SetActive(true);
         menuPanel.enabled = true;
-        
-        Debug.Log("hi");
 
         menuPanel.PushInfo("Le combat vient de commencer !");
 
@@ -77,7 +75,6 @@ public class CombatManager : MonoBehaviour
         menuPanel.DisplayInfo("Le combat commence !", () => {
             StartPlayerTurn();
         });
-        Debug.Log("hello");
     }
 
 
@@ -177,8 +174,10 @@ public class CombatManager : MonoBehaviour
                 menuPanel.DisplayInfo($"Vous attaquez le {boss.bossName}, et lui infligez {damage} dégâts !", () => {
                     if (bossHP == 0) {
                         menuPanel.DisplayInfo($"Le {boss.bossName} a été tué, félicitations !", () => {
+                            menuPanel.enabled = false;
                             playerCombat.StopCombat();
                             boss.StopCombat();
+                            gameObject.SetActive(false);
                             if (endDelegate != null)
                                 endDelegate(true); // hasPlayerWon = true
                         });

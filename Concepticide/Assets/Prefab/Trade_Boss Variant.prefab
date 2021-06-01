@@ -27,9 +27,13 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2098751109, guid: e218b66930d51a741a5150ddb1bfeec0, type: 3}
+      propertyPath: defense
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1233347782355984, guid: e218b66930d51a741a5150ddb1bfeec0, type: 3}
       propertyPath: m_Name
-      value: Trade_Boss
+      value: Trade_Boss Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4163706531932942, guid: e218b66930d51a741a5150ddb1bfeec0, type: 3}
       propertyPath: m_RootOrder
