@@ -10,16 +10,6 @@ public class CombatManager : MonoBehaviour
 
 
     public MenuPanel menuPanel;
-/*
-    public Canvas playerStats;
-    public Canvas bossStats;
-
-    public Slider playerHealthBar;
-    public Slider playerManaBar;
-    public Slider bossHealthBar;
-
-    public Text playerStatField;
-    public Text bossStatField; */
 
     private float _playerHP;
     private float _playerMana;
@@ -66,9 +56,14 @@ public class CombatManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("update cm");
         
     }
     public void StartCombat() {
+        menuPanel.enabled = true;
+        
+        Debug.Log("hi");
+
         menuPanel.PushInfo("Le combat vient de commencer !");
 
         playerHP = playerCombat.hp;
@@ -82,6 +77,7 @@ public class CombatManager : MonoBehaviour
         menuPanel.DisplayInfo("Le combat commence !", () => {
             StartPlayerTurn();
         });
+        Debug.Log("hello");
     }
 
 

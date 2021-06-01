@@ -6,6 +6,9 @@ public class Portal : MonoBehaviour
 {
     public Transform otherPortalPos;
 
+    public BossArena bossArena;
+    public Concept.Id concept;
+
     // Update is called once per frame
     void Update()
     {
@@ -14,12 +17,11 @@ public class Portal : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
-        {
-            Debug.Log("oui");
-            other.transform.position = otherPortalPos.position;
-            
+        if (bossArena == null) {
+            Debug.Log("Portal not linked!");
+            return;
         }
+        bossArena.StartCombat(concept);
     }
     
 }
