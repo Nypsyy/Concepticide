@@ -5,10 +5,18 @@ using UnityEngine;
 public class Concept : MonoBehaviour
 {
 
+    [Header("Nature")]
     public Material[] m_Nature;
     public Material m_NatureMaterial0;
     public Material m_NatureMaterial1;
     private GameObject[] m_ToHide;
+    [HideInInspector] public bool isNatureAlive;
+
+    [Header("Magic")] 
+    [HideInInspector] public bool isMagicAlive;
+    
+    [Header("Trading")]
+    [HideInInspector] public bool isTradingAlive;
 
     public PlayerCombat m_PlayerCombat; // needed for applying magic & trading penalties
 
@@ -20,6 +28,9 @@ public class Concept : MonoBehaviour
         if (m_ToHide == null)
             m_ToHide = GameObject.FindGameObjectsWithTag("Nature");
         Nature(true);
+        Magic(true);
+        Trading(true);
+        
     }
     
     void Update()
@@ -37,8 +48,8 @@ public class Concept : MonoBehaviour
         Debug.Log(concept);
         switch(concept) {
             case Id.Nature: Nature(false); break;
-            case Id.Trading: m_PlayerCombat.hasItems = false; break;
-            case Id.Magic: m_PlayerCombat.hasMagic = false; break;
+            case Id.Trading: m_PlayerCombat.hasItems = false; Trading(false); break;
+            case Id.Magic: m_PlayerCombat.hasMagic = false; Magic(false); break;
         }
     }
 
@@ -54,7 +65,9 @@ public class Concept : MonoBehaviour
             {
                 toHide.SetActive(true);
             }
-            
+
+            isNatureAlive = true;
+
         }
 
         else
@@ -67,6 +80,34 @@ public class Concept : MonoBehaviour
             {
                 toHide.SetActive(false);
             }
+
+            isNatureAlive = false;
+        }
+    }
+
+    void Magic(bool mode)
+    {
+        if (mode)
+        {
+            isMagicAlive = true;
+        }
+
+        else
+        {
+            isMagicAlive = false;
+        }
+    }
+
+    void Trading(bool mode)
+    {
+        if (mode)
+        {
+            isTradingAlive = true;
+        }
+
+        else
+        {
+            isTradingAlive = false;
         }
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Dealer : MonoBehaviour
 {
+    public Concept m_Concept;
 
     public Dialogue dialogue1;
     private Dialogue dialogue2;
@@ -16,7 +17,10 @@ public class Dealer : MonoBehaviour
     // Update is called once per frame
     void OnMouseDown()
     {
-        Debug.Log("j'ai cliqué sur " + this.gameObject.name);
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue1);
+        if (m_Concept.isTradingAlive)
+        {
+            Debug.Log("j'ai clique sur " + this.gameObject.name);
+            FindObjectOfType<DialogueManager>().StartDialogue(dialogue1);
+        }
     }
 }
