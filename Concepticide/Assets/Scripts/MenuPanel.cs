@@ -36,7 +36,8 @@ public class MenuPanel : MonoBehaviour
     {
         menuChoice.SetActive(false);
         menuChoice.transform.SetParent(null, false);
-        gameObject.SetActive(false);
+        //gameObject.SetActive(false);
+        Debug.Log("start");
     }
 
 
@@ -45,12 +46,14 @@ public class MenuPanel : MonoBehaviour
     {
         // TODO: better input system
 
+        Debug.Log("update");
         if (Input.GetKeyDown("up"))
             _UpdateSelectedPos(_selectedPos - 1);
         if (Input.GetKeyDown("down"))
             _UpdateSelectedPos(_selectedPos + 1);
         
         if (Input.GetKeyDown(KeyCode.Return)) {
+            Debug.Log("return");
             gameObject.SetActive(false);
             if (_infoValidationHandler != null) {
                 var validationHandler = _infoValidationHandler;
@@ -69,6 +72,7 @@ public class MenuPanel : MonoBehaviour
     }
 
     public void DisplayInfo(string text, ValidationDelegate onValidation) {    
+        Debug.Log("gameObject displayInfo");
         gameObject.SetActive(true);
         GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 0);
 
@@ -78,6 +82,7 @@ public class MenuPanel : MonoBehaviour
 
     public void DisplayMenu(Option[] options) {
         gameObject.SetActive(true);
+        Debug.Log("gameObject displayMenu");
 
         foreach (var (_, gameObj,_) in _options)
             GameObject.Destroy(gameObj);

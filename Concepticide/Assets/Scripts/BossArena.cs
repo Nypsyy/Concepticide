@@ -30,7 +30,7 @@ public class BossArena : MonoBehaviour
     }
 
     // Start Combat
-    void StartCombat(Concept.Id bossId) {
+    public void StartCombat(Concept.Id bossId) {
         Boss boss = null;
         switch (bossId) {
             case Concept.Id.Trading: boss = bossTrading; break;
@@ -39,12 +39,19 @@ public class BossArena : MonoBehaviour
         }
         boss.transform.position = tpBoss.transform.position;
         boss.transform.rotation = tpBoss.transform.rotation;
+
+        Debug.Log(playerCombat.transform.position);
         playerCombat.transform.position = tpPlayer.transform.position;
         playerCombat.transform.rotation = tpPlayer.transform.rotation;
+        //playerCombat.gameObject.GetComponent<ThirdPersonMovement>().enabled = false;
+        playerCombat.gameObject.GetComponent<CharacterController>().enabled = false;
+        Debug.Log(playerCombat.transform.position);
+        Debug.Log(playerCombat);
         
         combatManager.boss = boss;
         combatManager.playerCombat = playerCombat;
 
         combatManager.gameObject.SetActive(true);
+        combatManager.StartCombat();
     }
 }

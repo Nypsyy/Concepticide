@@ -809,6 +809,10 @@ MonoBehaviour:
   attack: 20
   defense: 10
   speed: 1
+  stats: {fileID: 1597467778}
+  healthBar: {fileID: 1622616011}
+  manaBar: {fileID: 1347445802}
+  statField: {fileID: 280700466}
 --- !u!54 &3733257653421742545
 Rigidbody:
   m_ObjectHideFlags: 0
