@@ -10,6 +10,8 @@ public class Concept : MonoBehaviour
     public Material m_NatureMaterial1;
     private GameObject[] m_ToHide;
 
+    public PlayerCombat m_PlayerCombat; // needed for applying magic & trading penalties
+
     public enum Id { Trading, Nature, Magic };
 
 
@@ -35,6 +37,8 @@ public class Concept : MonoBehaviour
         Debug.Log(concept);
         switch(concept) {
             case Id.Nature: Nature(false); break;
+            case Id.Trading: m_PlayerCombat.hasItems = false; break;
+            case Id.Magic: m_PlayerCombat.hasMagic = false; break;
         }
     }
 

@@ -1954,6 +1954,9 @@ MonoBehaviour:
   - Light
   - Heavy
   - Magic
+  stats: {fileID: 1545691666}
+  healthBar: {fileID: 1916028945}
+  statField: {fileID: 1232990550}
 --- !u!1 &1250870845206316
 GameObject:
   m_ObjectHideFlags: 0

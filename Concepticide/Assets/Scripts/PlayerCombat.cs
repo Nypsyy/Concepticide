@@ -16,6 +16,9 @@ public class PlayerCombat : MonoBehaviour
 
     public Text statField;
 
+    public bool hasMagic = true;
+    public bool hasItems = true;
+
     private CombatManager _combatManager;
 
 
@@ -45,6 +48,7 @@ public class PlayerCombat : MonoBehaviour
     }
 
     public void StartCombat(CombatManager manager) {
+        manaBar.gameObject.SetActive(hasMagic);
         _combatManager = manager;
         stats.enabled = true;
     }
@@ -67,8 +71,8 @@ public class PlayerCombat : MonoBehaviour
                     new Option("Attaque...", "", () => _SetMenu(_SubMenu.Attack)),
                     new Option("Défense", "Votre défense sera doublée pour le prochain tour.",
                                 () => _combatManager.EndPlayerTurn(Action.Defense)),
-                    new Option("Magie...", "", () => _SetMenu(_SubMenu.Magic)),
-                    new Option("Objets...", "", () => _SetMenu(_SubMenu.Objects)),
+                    hasMagic ? new Option("Magie...", "", () => _SetMenu(_SubMenu.Magic)) : Option.NULL,
+                    hasItems ? new Option("Objets...", "", () => _SetMenu(_SubMenu.Objects)) : Option.NULL,
                     new Option("Fuir", "Vous quitterez le combat.", () => _combatManager.EndPlayerTurn(Action.Escape)),
                 });
                 break;
@@ -90,7 +94,7 @@ public class PlayerCombat : MonoBehaviour
             case _SubMenu.Objects:
                 _combatManager.menuPanel.DisplayMenu(new Option[]{
                     new Option("Potion de vie", "PV + 50", () => _combatManager.EndPlayerTurn(Action.RegenHP)),
-                    new Option("Potion de magie", "Mana + 50", () => _combatManager.EndPlayerTurn(Action.RegenMana)),
+                    hasMagic ? new Option("Potion de magie", "Mana + 50", () => _combatManager.EndPlayerTurn(Action.RegenMana)) : Option.NULL,
                     new Option("Retour...", "", () => _SetMenu(_SubMenu.Main)),
                 });
                 break;
