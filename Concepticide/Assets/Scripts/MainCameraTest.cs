@@ -6,21 +6,12 @@ using UnityEngine.UI;
 public class MainCameraTest : MonoBehaviour
 {
 
-    public GameObject combatManagerPrefab;
+    public CombatManager combatManager;
 
     public PlayerCombat playerCombat;
 
     public Boss boss;
 
-    public Canvas playerStats;
-    public Canvas bossStats;
-
-    public Slider playerHealthBar;
-    public Slider playerManaBar;
-    public Slider bossHealthBar;
-
-    public Text playerStatField;
-    public Text bossStatField;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +26,7 @@ public class MainCameraTest : MonoBehaviour
     }
 
     void _StartCombat() {
-        CombatManager newCombatManager = Instantiate(combatManagerPrefab, transform).GetComponent<CombatManager>();
+        /*CombatManager newCombatManager = Instantiate(combatManagerPrefab, transform).GetComponent<CombatManager>();
         newCombatManager.boss = boss;
         newCombatManager.playerCombat = playerCombat;
         /*newCombatManager.playerStats = playerStats;
@@ -44,9 +35,18 @@ public class MainCameraTest : MonoBehaviour
         newCombatManager.playerManaBar = playerManaBar;
         newCombatManager.bossHealthBar = bossHealthBar;
         newCombatManager.playerStatField = playerStatField;
-        newCombatManager.bossStatField = bossStatField;*/
+        newCombatManager.bossStatField = bossStatField;
         newCombatManager.endDelegate = (hasPlayerWon) => {
             _StartCombat(); // doing combat forever in this case
         };
+        newCombatManager.enabled = true;
+        newCombatManager.StartCombat();*/
+        combatManager.boss = boss;
+        combatManager.playerCombat = playerCombat;
+        combatManager.gameObject.SetActive(true);
+        combatManager.endDelegate = (hasPlayerWon) => {
+            _StartCombat(); // doing combat forever in this case
+        };
+        combatManager.StartCombat();
     }
 }
