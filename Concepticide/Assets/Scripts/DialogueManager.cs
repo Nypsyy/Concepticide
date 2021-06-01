@@ -20,6 +20,7 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("Strating conversation with " + dialogue.name);
         animator.SetBool("isOpen", true);
+        shopPanel.SetBool("isOpen", true);
         nameText.text = dialogue.name;
 
         sentences.Clear();
