@@ -17,6 +17,7 @@ public class BossArena : MonoBehaviour
     public GameObject tpSpawn;
 
     public GameObject thirdPersonCamera;
+    public GameObject staticCam;
 
     public Concept concept;
 
@@ -49,6 +50,7 @@ public class BossArena : MonoBehaviour
         playerCombat.gameObject.GetComponent<ThirdPersonMovement>().allowMove = false;
         playerCombat.gameObject.GetComponent<CharacterController>().enabled = false;
         thirdPersonCamera.SetActive(false);
+        staticCam.SetActive(true);
         playerCombat.transform.position = tpPlayer.transform.position;
         playerCombat.transform.rotation = tpPlayer.transform.rotation;
         
@@ -64,6 +66,7 @@ public class BossArena : MonoBehaviour
             playerCombat.gameObject.GetComponent<ThirdPersonMovement>().allowMove = true;
             playerCombat.gameObject.GetComponent<CharacterController>().enabled = true;
             thirdPersonCamera.SetActive(true);
+            staticCam.SetActive(false);
         };
 
         combatManager.StartCombat();
