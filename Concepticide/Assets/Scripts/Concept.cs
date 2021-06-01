@@ -17,8 +17,7 @@ public class Concept : MonoBehaviour
     {
         if (m_ToHide == null)
             m_ToHide = GameObject.FindGameObjectsWithTag("Nature");
-        Nature(false);
-        
+        Nature(true);
     }
     
     void Update()
@@ -29,6 +28,14 @@ public class Concept : MonoBehaviour
     void OnApplicationQuit()
     {
         Nature(true);
+    }
+
+    public void KillConcept(Id concept) {
+        Debug.Log("Concept killed: ");
+        Debug.Log(concept);
+        switch(concept) {
+            case Id.Nature: Nature(false); break;
+        }
     }
 
     void Nature(bool mode)
