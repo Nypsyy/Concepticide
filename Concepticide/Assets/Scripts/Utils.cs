@@ -11,6 +11,6 @@ public struct Utils
 
     public struct AnimVariables
     {
-            public static readonly int IsRunning = Animator.StringToHash("isRunning");
+            public static readonly int running = Animator.StringToHash("speed");
     }
 }

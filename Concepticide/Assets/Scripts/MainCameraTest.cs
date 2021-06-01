@@ -38,13 +38,13 @@ public class MainCameraTest : MonoBehaviour
         CombatManager newCombatManager = Instantiate(combatManagerPrefab, transform).GetComponent<CombatManager>();
         newCombatManager.boss = boss;
         newCombatManager.playerCombat = playerCombat;
-        newCombatManager.playerStats = playerStats;
+        /*newCombatManager.playerStats = playerStats;
         newCombatManager.bossStats = bossStats;
         newCombatManager.playerHealthBar = playerHealthBar;
         newCombatManager.playerManaBar = playerManaBar;
         newCombatManager.bossHealthBar = bossHealthBar;
         newCombatManager.playerStatField = playerStatField;
-        newCombatManager.bossStatField = bossStatField;
+        newCombatManager.bossStatField = bossStatField;*/
         newCombatManager.endDelegate = (hasPlayerWon) => {
             _StartCombat(); // doing combat forever in this case
         };
