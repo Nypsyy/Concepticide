@@ -19,19 +19,4 @@ public class Dealer : MonoBehaviour
         Debug.Log("j'ai cliqué sur " + this.gameObject.name);
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue1);
     }
-
-    void Update()
-    {
-        if(Input.GetMouseButtonDown(0))
-        {
-
-            Debug.Log("j'ai cliqué sur ");
-        }
-
-        if(Input.GetKeyDown("h"))
-        {
-            Debug.Log("oui");
-        }
-    }
-    
 }
