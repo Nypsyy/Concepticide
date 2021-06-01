@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     public Text nameText;
     public Text dialogueText;
     public Animator animator;
+    public Animator shopPanel;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +20,7 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("Strating conversation with " + dialogue.name);
         animator.SetBool("isOpen", true);
+        shopPanel.SetBool("isOpen", true);
         nameText.text = dialogue.name;
 
         sentences.Clear();
