@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0681133dd7c34c8f813055689505af72, type: 3}
+  m_Script: {fileID: 11500000, guid: 05df15da5e9f480997ba74462b890a80, type: 3}
   m_Name: HealthPotion
   m_EditorClassIdentifier: 
-  name: Health Potion
-  sprite: {fileID: -3237844493445452581, guid: 8e31a03e47e438b46b22b3f44bfb72f0, type: 3}
-  itemType: 0
+  prefab: {fileID: 5892537693815993677, guid: 5ef4c81e4ad0fef459310fa9c446b722, type: 3}
+  type: 0
+  description: "Une potion aux reflets rougeoyants qui semble redonner la volont\xE9
+    de vivre \xE0 ceux qui la boivent."
+  restoreHealth: 20

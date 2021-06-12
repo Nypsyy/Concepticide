@@ -9,9 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0681133dd7c34c8f813055689505af72, type: 3}
+  m_Script: {fileID: 11500000, guid: 9223df6b62aa4e32ab3bff669002948b, type: 3}
   m_Name: ManaPotion
   m_EditorClassIdentifier: 
-  name: Mana Potion
-  sprite: {fileID: 7771185243529891863, guid: 8e31a03e47e438b46b22b3f44bfb72f0, type: 3}
-  itemType: 1
+  prefab: {fileID: 7479282423248855820, guid: 5a38ea39fcc1ba547be0e5f70938bb85, type: 3}
+  type: 1
+  description: This strange potion is very appreciated among the magicians, but no
+    one knows how it works.
+  restoreMana: 20
