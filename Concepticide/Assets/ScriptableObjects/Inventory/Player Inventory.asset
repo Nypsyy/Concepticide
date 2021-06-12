@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0681133dd7c34c8f813055689505af72, type: 3}
-  m_Name: SpeedPotion
+  m_Script: {fileID: 11500000, guid: 9f20e9777b2fbb642a13ab1d04f3130e, type: 3}
+  m_Name: Player Inventory
   m_EditorClassIdentifier: 
-  name: Spee Potion
-  sprite: {fileID: -4057896849271182281, guid: 8e31a03e47e438b46b22b3f44bfb72f0, type: 3}
-  itemType: 2
+  container: []
