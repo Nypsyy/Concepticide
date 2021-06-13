@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DisplayInventory : MonoBehaviour
 {
+    public GameObject inventoryPrefab;
     public InventoryObject inventory;
 
     public int xStart;
@@ -17,7 +19,8 @@ public class DisplayInventory : MonoBehaviour
 
     private GameObject CreateNewItem(InventorySlot slot) {
         // Instantiating object with inventory panel as parent
-        var obj = Instantiate(slot.item.prefab, Vector3.zero, Quaternion.identity, transform);
+        var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
+        obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.database.getItem[slot.id].uiDisplay;
         // Amount
         obj.GetComponentInChildren<TextMeshProUGUI>().text = slot.amount.ToString("n0");
         // Add to the display dictionary
@@ -37,28 +40,27 @@ public class DisplayInventory : MonoBehaviour
 
     // Inventory at start
     private void CreateDisplay() {
-        for (var i = 0; i < inventory.container.Count; i++) {
-            var obj = CreateNewItem(inventory.container[i]);
+        for (var i = 0; i < inventory.container.items.Count; i++) {
+            var obj = CreateNewItem(inventory.container.items[i]);
             // Position in the panel
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
         }
     }
 
-    private void Update() {
-        UpdateDisplay();
-    }
+    private void Update() => UpdateDisplay();
 
     // When the inventory changes
     private void UpdateDisplay() {
-        for (var i = 0; i < inventory.container.Count; i++) {
+        for (var i = 0; i < inventory.container.items.Count; i++) {
+            var slot = inventory.container.items[i];
+
             // If already in the inventory
-            if (itemsDisplay.ContainsKey(inventory.container[i])) {
+            if (itemsDisplay.ContainsKey(slot)) {
                 // Updating amount display
-                itemsDisplay[inventory.container[i]].GetComponentInChildren<TextMeshProUGUI>().text =
-                    inventory.container[i].amount.ToString("n0");
+                itemsDisplay[slot].GetComponentInChildren<TextMeshProUGUI>().text = slot.amount.ToString("n0");
             }
             else {
-                var obj = CreateNewItem(inventory.container[i]);
+                var obj = CreateNewItem(slot);
                 // Position in the panel
                 obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
             }

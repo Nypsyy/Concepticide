@@ -1,30 +1,22 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
-using UnityEditor;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory", order = 0)]
-public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
+public class InventoryObject : ScriptableObject
 {
-    private ItemDatabaseObject _database;
+    public ItemDatabaseObject database;
     public string savePath;
 
-    // List of all objects held in the inventory
-    public List<InventorySlot> container = new List<InventorySlot>();
+    public Inventory container;
 
-    // Link the correct database
-    private void OnEnable() {
-#if UNITY_EDITOR
-        _database = (ItemDatabaseObject) AssetDatabase.LoadAssetAtPath("Assets/Scriptable Objects/Items/Database.asset",
-                                                                       typeof(ItemDatabaseObject));
-#else
-        _database = Resources.Load<ItemDatabaseObject>("Inventory/Database");
-#endif
-    }
-
+    [ContextMenu("Save")]
     public void Save() {
+        // SAVE DATA to JSON format, allowing player personalisation
+        /*
         // Json format
         var saveData = JsonUtility.ToJson(this, true);
         // Create a saving file to a common path no matter the platform
@@ -34,13 +26,24 @@ public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
         // Serializing and closing
         bf.Serialize(fs, saveData);
         fs.Close();
+        */
+
+
+        // SAVE DATA with a formatter, easier but no edition possible
+        IFormatter formatter = new BinaryFormatter();
+        Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Create, FileAccess.Write);
+        formatter.Serialize(stream, container);
+        stream.Close();
     }
 
+    [ContextMenu("Load")]
     public void Load() {
         // Checking the file
         if (!File.Exists(string.Concat(Application.persistentDataPath, savePath)))
             return;
 
+        // LOAD DATA JSON format
+        /*
         // Opening
         var bf = new BinaryFormatter();
         var fs = File.Open(string.Concat(Application.persistentDataPath, savePath), FileMode.Open);
@@ -48,38 +51,47 @@ public class InventoryObject : ScriptableObject, ISerializationCallbackReceiver
         // Deserializing and formatting for object
         JsonUtility.FromJsonOverwrite(bf.Deserialize(fs).ToString(), this);
         fs.Close();
+        */
+
+        IFormatter formatter = new BinaryFormatter();
+        Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Open, FileAccess.Read);
+        container = (Inventory) formatter.Deserialize(stream);
+        stream.Close();
     }
 
-    public void AddItem(ItemObject item, int amount) {
+    [ContextMenu("Clear")]
+    public void Clear() {
+        container = new Inventory();
+    }
+
+    public void AddItem(Item item, int amount) {
         // Adds the amount if the item already exists
-        foreach (var slot in container.Where(slot => slot.item == item)) {
+        foreach (var slot in container.items.Where(slot => slot.id == item.id)) {
             slot.Add(amount);
             return;
         }
 
         // Else creates and adds the item in the inventory
-        container.Add(new InventorySlot(_database.getId[item], item, amount));
+        container.items.Add(new InventorySlot(item.id, item, amount));
     }
+}
 
-    public void OnBeforeSerialize() {
-    }
-
-    public void OnAfterDeserialize() {
-        foreach (var slot in container) {
-            slot.item = _database.getItem[slot.id];
-        }
-    }
+[System.Serializable]
+public class Inventory
+{
+    // List of all objects held in the inventory
+    public List<InventorySlot> items = new List<InventorySlot>();
 }
 
 [System.Serializable]
 public class InventorySlot
 {
     public int id;
-    public ItemObject item; // The scriptable object
-    public int amount;      // How much
+    public Item item;  // The scriptable object
+    public int amount; // How much
 
     // Basic constructor
-    public InventorySlot(int id, ItemObject item, int amount) {
+    public InventorySlot(int id, Item item, int amount) {
         this.id = id;
         this.item = item;
         this.amount = amount;
