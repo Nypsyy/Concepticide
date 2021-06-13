@@ -1,10 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class GearRotation : MonoBehaviour
 {
-    public bool direction;
+    public bool direction,x,y,z;
     public float speedRotation = 15f;
     
     void FixedUpdate()
@@ -15,7 +16,8 @@ public class GearRotation : MonoBehaviour
         else
             coefficient = -1;
         
-        var eulerAngles = Vector3.up * (speedRotation * coefficient);
+        var directionRotation = new Vector3(Convert.ToInt16(x), Convert.ToInt16(y), Convert.ToInt16(z));
+        var eulerAngles = directionRotation * (speedRotation * coefficient);
         transform.Rotate(eulerAngles * Time.deltaTime, Space.Self);
     }
 }
