@@ -8,5 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Fusion.unity
     guid: 5ca8e7c8131454d45976db38e00a8422
+  - enabled: 0
+    path: Assets/Scenes/Mayou.unity
+    guid: 8e11f27adf2698140bf880f7aefa249c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 7377cff09524be14fbf16626b97ffb12, type: 2}
