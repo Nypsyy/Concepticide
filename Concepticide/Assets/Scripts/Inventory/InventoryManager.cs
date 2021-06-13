@@ -5,6 +5,14 @@ public class InventoryManager : MonoBehaviour
 {
     public InventoryObject inventory;
 
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.S))
+            inventory.Save();
+
+        if (Input.GetKeyDown(KeyCode.L))
+            inventory.Load();
+    }
+
     private void OnTriggerEnter(Collider other) {
         var item = other.GetComponent<Item>();
 
