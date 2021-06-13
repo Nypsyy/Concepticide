@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Concept : MonoBehaviour
 {
@@ -75,7 +76,11 @@ public class Concept : MonoBehaviour
             m_Nature[0].SetColor("_Color", new Color(0.8f,0.3f,0.3f));
             m_Nature[1].SetColor("_Color", new Color(0.8f,0.35f,0.35f));
             m_Nature[2].SetColor("_Color", new Color(0.8f,0.35f,0.35f));
-            
+
+
+            //appeler le compteur de temps
+            FindObjectOfType<TimerCountDown>().StartCountDown();
+
             foreach (GameObject toHide in m_ToHide)
             {
                 toHide.SetActive(false);
@@ -109,5 +114,16 @@ public class Concept : MonoBehaviour
         {
             isTradingAlive = false;
         }
+    }
+
+    public void EndGame()
+    {
+        //Debug.Log("GameOver");
+        Invoke("Restart", 3.0f);
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
