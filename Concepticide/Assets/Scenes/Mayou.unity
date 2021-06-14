@@ -206,27 +206,12 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5217320371187419140, guid: 11ffba29df14c054aa5a2695b18e9f59, type: 3}
+      propertyPath: inventoryScreen
+      value: 
+      objectReference: {fileID: 1248133344}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11ffba29df14c054aa5a2695b18e9f59, type: 3}
---- !u!1 &213013843 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 131680, guid: 11ffba29df14c054aa5a2695b18e9f59, type: 3}
-  m_PrefabInstance: {fileID: 213013842}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &213013844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 213013843}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bdd5bfcb6b7bc54999a84c4c510d333, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: 3a7f5427376059941a9b5cad8ef4171e, type: 2}
-  inventoryScreen: {fileID: 1248133344}
 --- !u!1 &611916900
 GameObject:
   m_ObjectHideFlags: 0
