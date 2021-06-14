@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
-// Item type in the game
+// Items in the game
 public enum ItemType
 {
-    Health,
-    Mana
+    HealthPotion,
+    ManaPotion
 }
 
 // Base class for all scriptable objects items in the game

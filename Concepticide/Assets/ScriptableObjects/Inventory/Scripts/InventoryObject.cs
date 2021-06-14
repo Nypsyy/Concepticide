@@ -15,6 +15,7 @@ public class InventoryObject : ScriptableObject
 
     [ContextMenu("Save")]
     public void Save() {
+        Debug.Log("Saving inventory...");
         // SAVE DATA to JSON format, allowing player personalisation
         /*
         // Json format
@@ -38,6 +39,7 @@ public class InventoryObject : ScriptableObject
 
     [ContextMenu("Load")]
     public void Load() {
+        Debug.Log("Loading inventory...");
         // Checking the file
         if (!File.Exists(string.Concat(Application.persistentDataPath, savePath)))
             return;
