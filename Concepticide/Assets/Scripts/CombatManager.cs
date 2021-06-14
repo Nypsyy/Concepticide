@@ -11,6 +11,8 @@ public class CombatManager : MonoBehaviour
 
     public MenuPanel menuPanel;
 
+    public LootCount lootCount;
+
     private float _playerHP;
     private float _playerMana;
     private float _bossHP; 
@@ -69,6 +71,9 @@ public class CombatManager : MonoBehaviour
         bossHP = boss.hp;
 
         UpdateStatsUI();
+
+        lootCount.StartCombat();
+        
         playerCombat.StartCombat(this);
         boss.StartCombat(this);
 
@@ -154,6 +159,15 @@ public class CombatManager : MonoBehaviour
         playerCombat.StartTurn();
     }
 
+    private void EndCombat(bool hasPlayerWon) {
+        menuPanel.enabled = false;
+        playerCombat.StopCombat();
+        boss.StopCombat();
+        gameObject.SetActive(false);
+        if (endDelegate != null)
+            endDelegate(hasPlayerWon);
+    }
+
     public void EndBossTurn(Boss.Action action) {
         switch (action) {
             case Boss.Action.Attack:
@@ -165,16 +179,13 @@ public class CombatManager : MonoBehaviour
                 playerHP = Mathf.Max(0, playerHP - damage);
                 menuPanel.DisplayInfo($"Le {boss.bossName} vous attaque et vous inflige {damage} dégâts !", () => {
                     if (playerHP == 0) {
+                        lootCount.EndCombat(false);
                         menuPanel.DisplayInfo($"Vous avez été tué...", () => {
-                            menuPanel.enabled = false;
-                            playerCombat.StopCombat();
-                            boss.StopCombat();
-                            gameObject.SetActive(false);
-                            if (endDelegate != null)
-                                endDelegate(false); // hasPlayerWon = false;
+                            EndCombat(false);
                         });
                     } else {
                         StartPlayerTurn();
+                        lootCount.Add(1);
                     }
                 });
                 break;
@@ -200,13 +211,9 @@ public class CombatManager : MonoBehaviour
                 bossHP = Mathf.Max(0, bossHP - damage);
                 menuPanel.DisplayInfo($"Vous attaquez le {boss.bossName}, et lui infligez {damage} dégâts !", () => {
                     if (bossHP == 0) {
+                        lootCount.EndCombat(true);
                         menuPanel.DisplayInfo($"Le {boss.bossName} a été tué, félicitations !", () => {
-                            menuPanel.enabled = false;
-                            playerCombat.StopCombat();
-                            boss.StopCombat();
-                            gameObject.SetActive(false);
-                            if (endDelegate != null)
-                                endDelegate(true); // hasPlayerWon = true
+                            EndCombat(true);
                         });
                     } else {
                         boss.StartTurn();
@@ -222,7 +229,10 @@ public class CombatManager : MonoBehaviour
 
             case PlayerCombat.Action.Escape:
                 // For now, let's ask the player another action
-                menuPanel.DisplayInfo($"La fuite est impossible !", () => { playerCombat.StartTurn(); });
+                menuPanel.DisplayInfo($"Vous prenez la fuite.", () => {
+                    lootCount.RunawayCombat();
+                    EndCombat(false);
+                });
                 break;
 
             case PlayerCombat.Action.MagicAttack:

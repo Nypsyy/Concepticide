@@ -73,7 +73,7 @@ public class PlayerCombat : MonoBehaviour
                                 () => _combatManager.EndPlayerTurn(Action.Defense)),
                     hasMagic ? new Option("Magie...", "", () => _SetMenu(_SubMenu.Magic)) : Option.NULL,
                     hasItems ? new Option("Objets...", "", () => _SetMenu(_SubMenu.Objects)) : Option.NULL,
-                    new Option("Fuir", "Vous quitterez le combat.", () => _combatManager.EndPlayerTurn(Action.Escape)),
+                    new Option("Fuir", "Vous quitterez le combat et garderez le métal amassé.", () => _combatManager.EndPlayerTurn(Action.Escape)),
                 });
                 break;
             case _SubMenu.Attack:
