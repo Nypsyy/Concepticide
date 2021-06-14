@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TimerCountDown : MonoBehaviour
 {
     float currentTime = 0f;
-    float countDownStartValue = 5f;
+    float countDownStartValue = 300f;
     [SerializeField] Text timeText ;
 
 
@@ -31,7 +31,7 @@ public class TimerCountDown : MonoBehaviour
             }
         }
 
-        if (currentTime <= 0)
+        if (currentTime <= 0 & currentTime > -3)
         {
             currentTime = 0;
             timeText.fontSize = 30;
@@ -49,5 +49,11 @@ public class TimerCountDown : MonoBehaviour
         }
     }
 
-    
+    public void AnnounceVictory()
+    {
+        currentTime = -4;
+        timeText.fontSize = 30;
+        timeText.color = Color.red;
+        timeText.text = "You won !";
+    }
 }

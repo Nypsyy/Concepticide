@@ -87,6 +87,11 @@ public class Concept : MonoBehaviour
             }
 
             isNatureAlive = false;
+
+            if (IsVictory())
+            {
+                EndGame();
+            }
         }
     }
 
@@ -100,6 +105,11 @@ public class Concept : MonoBehaviour
         else
         {
             isMagicAlive = false;
+
+            if (IsVictory())
+            {
+                EndGame();
+            }
         }
     }
 
@@ -113,12 +123,27 @@ public class Concept : MonoBehaviour
         else
         {
             isTradingAlive = false;
+
+            if (IsVictory())
+            {
+                EndGame();
+            }
         }
+    }
+
+
+    public bool IsVictory()
+    {
+        if (!isNatureAlive & !isMagicAlive & !isTradingAlive)
+        {
+            FindObjectOfType<TimerCountDown>().AnnounceVictory();
+            return true;
+        }
+        return false;
     }
 
     public void EndGame()
     {
-        //Debug.Log("GameOver");
         Invoke("Restart", 3.0f);
     }
 
