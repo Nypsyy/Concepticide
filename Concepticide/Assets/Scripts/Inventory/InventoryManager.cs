@@ -3,6 +3,7 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     public InventoryObject inventory;
+    public GameObject inventoryScreen;
 
     private void Update() {
         if (Input.GetKeyDown(KeyCode.S))
@@ -10,6 +11,9 @@ public class InventoryManager : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.L))
             inventory.Load();
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+            inventoryScreen.SetActive(!inventoryScreen.activeSelf);
     }
 
     private void OnTriggerEnter(Collider other) {
