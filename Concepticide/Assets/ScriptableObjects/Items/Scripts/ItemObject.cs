@@ -4,7 +4,8 @@
 public enum ItemType
 {
     HealthPotion,
-    ManaPotion
+    ManaPotion,
+    Tomat
 }
 
 // Base class for all scriptable objects items in the game

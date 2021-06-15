@@ -1,3 +1,4 @@
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,8 @@ public class Crop : MonoBehaviour
     private GameObject smallCrop;
     private GameObject mediumCrop;
     private GameObject largeCrop;
+
+    private ParticleSystem FX;
 
     private BoxCollider _collider;
 
@@ -18,16 +21,16 @@ public class Crop : MonoBehaviour
         mediumCrop = gameObject.transform.GetChild (1).gameObject;
         largeCrop = gameObject.transform.GetChild (2).gameObject;
 
+        FX = gameObject.transform.GetChild(3).gameObject.GetComponent<ParticleSystem>();
+
         _collider = gameObject.GetComponent<BoxCollider>();
         
-        InvokeRepeating(nameof(WaitForGrow),60,60);
+        InvokeRepeating(nameof(WaitForGrow),5,5);
         
     }
     
     void Update()
     {
-        Debug.Log(toGrow);
-        
         if (toGrow)
         {
             if (smallCrop.activeSelf)
@@ -52,6 +55,12 @@ public class Crop : MonoBehaviour
                 toGrow = false;
             }
         }
+
+        if (readyToHarvest())
+            gameObject.tag = "GroundItem";
+
+        else
+            gameObject.tag = "Untagged";
     }
     
     void WaitForGrow()
@@ -68,5 +77,17 @@ public class Crop : MonoBehaviour
     {
         largeCrop.SetActive(false);
         smallCrop.SetActive(true);
+        
+        FX.Play();
+        
+        gameObject.tag = "Untagged";
+    }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (readyToHarvest())
+        {
+            Harvest();
+        }
     }
 }

@@ -59,7 +59,7 @@ public class ThirdPersonMovement : MonoBehaviour
         Move();
     }
     
-    private void OnTriggerEnter(Collider other)
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<Crop>())
         {
@@ -68,5 +68,5 @@ public class ThirdPersonMovement : MonoBehaviour
                 other.gameObject.GetComponent<Crop>().Harvest();
             }
         }
-    }
+    }*/
 }
