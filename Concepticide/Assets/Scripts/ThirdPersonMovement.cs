@@ -55,4 +55,15 @@ public class ThirdPersonMovement : MonoBehaviour
     private void Update() {
         Move();
     }
+    
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<Crop>())
+        {
+            if (other.gameObject.GetComponent<Crop>().readyToHarvest() && Input.GetKeyDown("e"))
+            {
+                other.gameObject.GetComponent<Crop>().Harvest();
+            }
+        }
+    }
 }
