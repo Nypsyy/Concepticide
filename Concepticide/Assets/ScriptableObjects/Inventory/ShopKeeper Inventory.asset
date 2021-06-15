@@ -20,9 +20,9 @@ MonoBehaviour:
       item:
         id: 0
         name: Health Potion
-      amount: 10000
+      amount: 1000
     - id: 1
       item:
         id: 1
         name: Mana Potion
-      amount: 10000
+      amount: 1000

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731146, g: 0.38073766, b: 0.35873282, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311482, g: 0.38073766, b: 0.3587327, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -206,10 +206,6 @@ PrefabInstance:
       propertyPath: m_UseGravity
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5217320371187419140, guid: 11ffba29df14c054aa5a2695b18e9f59, type: 3}
-      propertyPath: inventory
-      value: 
-      objectReference: {fileID: 11400000, guid: fefb34c6f74e0b749b9b98689e9b1e4e, type: 2}
     - target: {fileID: 5217320371187419140, guid: 11ffba29df14c054aa5a2695b18e9f59, type: 3}
       propertyPath: inventoryScreen
       value: 
@@ -435,7 +431,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fa0d48dae61a4b448f6477cd04165fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 30e35371c489a354c93de9836a972183, type: 2}
+  item: {fileID: 11400000, guid: 34cbd468ea486e64eaa9bed1daeb6e8e, type: 2}
 --- !u!4 &860458952
 Transform:
   m_ObjectHideFlags: 0
@@ -540,7 +536,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113308965}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.73, z: -2.79}
+  m_LocalPosition: {x: 2.666, y: 0.73, z: -2.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -635,7 +631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryPrefab: {fileID: 7212879441521910262, guid: ce22a32c8b2d4304793606220921ffbf, type: 3}
-  inventory: {fileID: 11400000, guid: 3a7f5427376059941a9b5cad8ef4171e, type: 2}
+  inventory: {fileID: 11400000, guid: fefb34c6f74e0b749b9b98689e9b1e4e, type: 2}
   xStart: -90
   yStart: 160
   xSpaceItems: 90

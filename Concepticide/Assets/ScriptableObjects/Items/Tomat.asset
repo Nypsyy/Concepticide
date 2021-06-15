@@ -9,13 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68cae890962686f49ad124155f03c6b3, type: 3}
+  m_Script: {fileID: 11500000, guid: 736e9235ca524e3490e8f0ba68c0a43a, type: 3}
   m_Name: Tomat
   m_EditorClassIdentifier: 
   id: 2
   uiDisplay: {fileID: 2443381508606744931, guid: 8e31a03e47e438b46b22b3f44bfb72f0, type: 3}
   type: 2
-  description: 'Tomat
-
-'
-  boostAtk: 5
+  description: A big Tomat
+  attackBoost: 10

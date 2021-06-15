@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
@@ -14,7 +13,7 @@ public class InventoryManager : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (!other.CompareTag("GroundItem"))
             return;
-
+        
         inventory.AddItem(new Item(other.GetComponent<GroundItem>().item), 1);
         Destroy(other.gameObject);
     }

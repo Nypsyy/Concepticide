@@ -882,7 +882,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bdd5bfcb6b7bc54999a84c4c510d333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 11400000, guid: 3a7f5427376059941a9b5cad8ef4171e, type: 2}
+  inventory: {fileID: 11400000, guid: fefb34c6f74e0b749b9b98689e9b1e4e, type: 2}
   inventoryScreen: {fileID: 0}
 --- !u!1 &133228
 GameObject:

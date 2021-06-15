@@ -35,6 +35,7 @@ public class InventoryObject : ScriptableObject
         Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Create, FileAccess.Write);
         formatter.Serialize(stream, container);
         stream.Close();
+        Debug.Log("Inventory saved");
     }
 
     [ContextMenu("Load")]
@@ -59,6 +60,7 @@ public class InventoryObject : ScriptableObject
         Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Open, FileAccess.Read);
         container = (Inventory) formatter.Deserialize(stream);
         stream.Close();
+        Debug.Log("Inventory loaded");
     }
 
     [ContextMenu("Clear")]

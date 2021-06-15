@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Tomat Object", menuName = "Inventory System/Items/Tomat", order = 2)]
+[CreateAssetMenu(fileName = "New Tomat Object", menuName = "Inventory System/Items/Tomat", order = 3)]
 public class Tomat : ItemObject
 {
-    public int boostAtk;
+    public int attackBoost;
 
     private void Awake() {
-        type = ItemType.Tomat;
+        type = ItemType.ManaPotion;
     }
 }

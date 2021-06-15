@@ -1,93 +1,54 @@
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Crop : MonoBehaviour
 {
-    private GameObject smallCrop;
-    private GameObject mediumCrop;
-    private GameObject largeCrop;
+    public ItemObject item;
 
-    private ParticleSystem FX;
+    private GameObject _smallCrop;
+    private GameObject _mediumCrop;
+    private GameObject _largeCrop;
 
-    private BoxCollider _collider;
+    private ParticleSystem _fx;
 
-    private bool toGrow = false;
+    private bool IsHarvestable => _largeCrop.activeSelf;
+
+    private void Start() {
+        _smallCrop = gameObject.transform.GetChild(0).gameObject;
+        _mediumCrop = gameObject.transform.GetChild(1).gameObject;
+        _largeCrop = gameObject.transform.GetChild(2).gameObject;
+
+        _fx = gameObject.transform.GetChild(3).gameObject.GetComponent<ParticleSystem>();
         
-    void Start()
-    {
-        smallCrop = gameObject.transform.GetChild (0).gameObject;
-        mediumCrop = gameObject.transform.GetChild (1).gameObject;
-        largeCrop = gameObject.transform.GetChild (2).gameObject;
-
-        FX = gameObject.transform.GetChild(3).gameObject.GetComponent<ParticleSystem>();
-
-        _collider = gameObject.GetComponent<BoxCollider>();
-        
-        InvokeRepeating(nameof(WaitForGrow),5,5);
-        
+        InvokeRepeating(nameof(TryGrow), 5, 5);
     }
-    
-    void Update()
-    {
-        if (toGrow)
-        {
-            if (smallCrop.activeSelf)
-            {
-                if (Random.Range(0, 100) <= 50f)
-                {
-                    smallCrop.SetActive(false);
-                    mediumCrop.SetActive(true);
-                }
 
-                toGrow = false;
-            }
+    private void TryGrow() {
+        if (_smallCrop.activeSelf) {
+            if (Random.Range(0, 100) > 50) return;
 
-            else if(mediumCrop.activeSelf)
-            {
-                if (Random.Range(0, 100) <= 50f)
-                {
-                    mediumCrop.SetActive(false);
-                    largeCrop.SetActive(true);
-                }
-
-                toGrow = false;
-            }
+            _smallCrop.SetActive(false);
+            _mediumCrop.SetActive(true);
         }
+        else if (_mediumCrop.activeSelf) {
+            if (Random.Range(0, 100) > 50) return;
 
-        if (readyToHarvest())
-            gameObject.tag = "GroundItem";
-
-        else
-            gameObject.tag = "Untagged";
-    }
-    
-    void WaitForGrow()
-    {
-        toGrow = true;
-    }
-
-    public bool readyToHarvest()
-    {
-        return largeCrop.activeSelf ? true : false;
-    }
-
-    public void Harvest()
-    {
-        largeCrop.SetActive(false);
-        smallCrop.SetActive(true);
-        
-        FX.Play();
-        
-        gameObject.tag = "Untagged";
-    }
-    
-    private void OnTriggerEnter(Collider other)
-    {
-        if (readyToHarvest())
-        {
-            Harvest();
+            _mediumCrop.SetActive(false);
+            _largeCrop.SetActive(true);
         }
+    }
+
+    private void Harvest() {
+        _largeCrop.SetActive(false);
+        _smallCrop.SetActive(true);
+
+        _fx.Play();
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (!other.CompareTag("Player")) return;
+        if (!IsHarvestable) return;
+
+        other.GetComponent<InventoryManager>().inventory.AddItem(new Item(item), 1);
+        Harvest();
     }
 }
