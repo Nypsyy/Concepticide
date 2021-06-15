@@ -13,12 +13,12 @@ public class InventoryManager : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (!other.CompareTag("GroundItem"))
             return;
-        
+
         inventory.AddItem(new Item(other.GetComponent<GroundItem>().item), 1);
         Destroy(other.gameObject);
     }
 
     private void OnApplicationQuit() {
-        inventory.container.items.Clear();
+        inventory.container.items = new InventorySlot[GameUtils.InventorySize];
     }
 }

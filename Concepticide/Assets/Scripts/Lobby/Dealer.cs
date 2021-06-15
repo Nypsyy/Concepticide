@@ -18,7 +18,6 @@ public class Dealer : MonoBehaviour
     private void OnMouseDown() {
         if (!m_Concept.isTradingAlive) return;
 
-        Debug.Log("Clicked on " + gameObject.name);
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue1);
     }
 }

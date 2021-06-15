@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using static GameUtils;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -10,20 +11,20 @@ public class DialogueManager : MonoBehaviour
     public Text dialogueText;
     public Animator animator;
 
-    public GameObject m_ShopPanel;
+    public GameObject shopKeeperInventory;
+    public GameObject playerInventory;
 
     private void Start() {
         sentences = new Queue<string>();
     }
 
     public void StartDialogue(Dialogue dialogue) {
-        Debug.Log("Starting conversation with " + dialogue.name);
-        animator.SetBool("isOpen", true);
+        animator.SetBool(AnimVariables.IsOpen, true);
         nameText.text = dialogue.name;
 
         sentences.Clear();
 
-        foreach (string sentence in dialogue.sentences) {
+        foreach (var sentence in dialogue.sentences) {
             sentences.Enqueue(sentence);
         }
 
@@ -31,24 +32,24 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void DisplayNextSentence() {
-        if (sentences.Count == 2)
-            m_ShopPanel.SetActive(true);
-        else
-            m_ShopPanel.SetActive(false);
+        shopKeeperInventory.SetActive(sentences.Count == 2);
+        playerInventory.SetActive(sentences.Count == 2);
+        // m_ShopPanel.SetActive(sentences.Count == 2);
 
         if (sentences.Count == 0) {
             EndDialogue();
             return;
         }
 
-        string sentence = sentences.Dequeue();
+        var sentence = sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
     }
 
     public void EndDialogue() {
-        Debug.Log("end of conversation");
-        animator.SetBool("isOpen", false);
+        animator.SetBool(AnimVariables.IsOpen, false);
+        shopKeeperInventory.SetActive(false);
+        playerInventory.SetActive(false);
     }
 
     private IEnumerator TypeSentence(string sentence) {

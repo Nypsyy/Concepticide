@@ -1,6 +1,6 @@
 using Cinemachine;
 using UnityEngine;
-using static Utils;
+using static GameUtils;
 
 public class ThirdPersonMovement : MonoBehaviour
 {
@@ -52,7 +52,7 @@ public class ThirdPersonMovement : MonoBehaviour
             cinemachineCam.m_XAxis.m_InputAxisValue = 0f;
             cinemachineCam.m_YAxis.m_InputAxisValue = 0f;
         }
-        animator.SetFloat(AnimVariables.running, moveDirection.magnitude);
+        animator.SetFloat(AnimVariables.Running, moveDirection.magnitude);
     }
 
     private void Update() {
