@@ -11,37 +11,32 @@ public class DialogueManager : MonoBehaviour
     public Animator animator;
 
     public GameObject m_ShopPanel;
-    // Start is called before the first frame update
-    void Start()
-    {
+
+    private void Start() {
         sentences = new Queue<string>();
     }
 
-    public void StartDialogue(Dialogue dialogue)
-    {
-        Debug.Log("Strating conversation with " + dialogue.name);
+    public void StartDialogue(Dialogue dialogue) {
+        Debug.Log("Starting conversation with " + dialogue.name);
         animator.SetBool("isOpen", true);
         nameText.text = dialogue.name;
 
         sentences.Clear();
 
-        foreach (string sentence in dialogue.sentences)
-        {
+        foreach (string sentence in dialogue.sentences) {
             sentences.Enqueue(sentence);
         }
 
         DisplayNextSentence();
     }
 
-    public void DisplayNextSentence()
-    {
-        if(sentences.Count == 2)
+    public void DisplayNextSentence() {
+        if (sentences.Count == 2)
             m_ShopPanel.SetActive(true);
         else
             m_ShopPanel.SetActive(false);
 
-        if (sentences.Count == 0)
-        {
+        if (sentences.Count == 0) {
             EndDialogue();
             return;
         }
@@ -51,20 +46,16 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(TypeSentence(sentence));
     }
 
-    public void EndDialogue()
-    {
+    public void EndDialogue() {
         Debug.Log("end of conversation");
         animator.SetBool("isOpen", false);
     }
 
-    IEnumerator TypeSentence (string sentence)
-    {
+    private IEnumerator TypeSentence(string sentence) {
         dialogueText.text = "";
-        foreach (char letter in sentence.ToCharArray())
-        {
+        foreach (var letter in sentence.ToCharArray()) {
             dialogueText.text += letter;
             yield return null;
         }
     }
-
 }

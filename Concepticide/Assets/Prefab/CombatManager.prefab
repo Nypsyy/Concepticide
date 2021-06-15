@@ -392,8 +392,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerCombat: {fileID: 0}
   boss: {fileID: 0}
-  infoText: {fileID: 9163292353972182476}
   menuPanel: {fileID: 9163292353173165396}
+  lootCount: {fileID: 0}
 --- !u!1 &9163292354819882790
 GameObject:
   m_ObjectHideFlags: 0
