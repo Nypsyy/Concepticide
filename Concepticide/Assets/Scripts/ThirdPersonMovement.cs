@@ -48,6 +48,9 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             cinemachineCam.m_XAxis.m_InputAxisName = "";
             cinemachineCam.m_YAxis.m_InputAxisName = "";
+
+            cinemachineCam.m_XAxis.m_InputAxisValue = 0f;
+            cinemachineCam.m_YAxis.m_InputAxisValue = 0f;
         }
         animator.SetFloat(AnimVariables.running, moveDirection.magnitude);
     }
