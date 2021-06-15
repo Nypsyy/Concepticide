@@ -20,7 +20,7 @@ public class Crop : MonoBehaviour
 
         _collider = gameObject.GetComponent<BoxCollider>();
         
-        InvokeRepeating(nameof(WaitForGrow),5,5);
+        InvokeRepeating(nameof(WaitForGrow),60,60);
         
     }
     
@@ -32,7 +32,7 @@ public class Crop : MonoBehaviour
         {
             if (smallCrop.activeSelf)
             {
-                if (Random.Range(0, 100) <= 5f)
+                if (Random.Range(0, 100) <= 50f)
                 {
                     smallCrop.SetActive(false);
                     mediumCrop.SetActive(true);
@@ -43,7 +43,7 @@ public class Crop : MonoBehaviour
 
             else if(mediumCrop.activeSelf)
             {
-                if (Random.Range(0, 100) <= 5f)
+                if (Random.Range(0, 100) <= 50f)
                 {
                     mediumCrop.SetActive(false);
                     largeCrop.SetActive(true);
