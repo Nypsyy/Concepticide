@@ -10,18 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f20e9777b2fbb642a13ab1d04f3130e, type: 3}
-  m_Name: ShopKeeper Inventory
+  m_Name: Player Equipment
   m_EditorClassIdentifier: 
   database: {fileID: 11400000, guid: 2db10f71301108747bb44ccb4a3f7a90, type: 2}
-  savePath: /shopKeeperInv.Save
+  savePath: /playerEquip.Save
   container:
     items:
-    - allowedItems: 04000000
+    - allowedItems: 00000000
       item:
         id: -1
         name: 
       amount: 0
-    - allowedItems: 05000000
+    - allowedItems: 01000000
+      item:
+        id: -1
+        name: 
+      amount: 0
+    - allowedItems: 02000000
+      item:
+        id: -1
+        name: 
+      amount: 0
+    - allowedItems: 03000000
+      item:
+        id: -1
+        name: 
+      amount: 0
+    - allowedItems: 03000000
       item:
         id: -1
         name: 

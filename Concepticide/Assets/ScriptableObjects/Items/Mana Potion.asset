@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9223df6b62aa4e32ab3bff669002948b, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f1e4891f8904469ada8c8fd7e54bb9e, type: 3}
   m_Name: Mana Potion
   m_EditorClassIdentifier: 
-  id: 1
   uiDisplay: {fileID: 7771185243529891863, guid: 8e31a03e47e438b46b22b3f44bfb72f0, type: 3}
-  type: 1
-  description: This strange potion is very appreciated among the magicians, but no
-    one knows how it works.
-  restoreMana: 20
+  type: 5
+  itemData:
+    id: 1
+    name: Mana Potion
+  stackable: 1
+  description: 

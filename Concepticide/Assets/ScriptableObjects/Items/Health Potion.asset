@@ -9,12 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05df15da5e9f480997ba74462b890a80, type: 3}
+  m_Script: {fileID: 11500000, guid: 8f1e4891f8904469ada8c8fd7e54bb9e, type: 3}
   m_Name: Health Potion
   m_EditorClassIdentifier: 
-  id: 0
   uiDisplay: {fileID: -3237844493445452581, guid: 8e31a03e47e438b46b22b3f44bfb72f0, type: 3}
-  type: 0
-  description: "Une potion aux reflets rougeoyants qui semble redonner la volont\xE9
-    de vivre \xE0 ceux qui la boivent."
-  restoreHealth: 20
+  type: 4
+  itemData:
+    id: 0
+    name: Health Potion
+  stackable: 1
+  description: Health Potion

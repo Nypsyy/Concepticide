@@ -883,7 +883,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: fefb34c6f74e0b749b9b98689e9b1e4e, type: 2}
+  equipment: {fileID: 11400000, guid: 3f708c41bb4029d4fbe8b995c5eed0b5, type: 2}
   inventoryScreen: {fileID: 0}
+  equipmentScreen: {fileID: 0}
 --- !u!1 &133228
 GameObject:
   m_ObjectHideFlags: 0

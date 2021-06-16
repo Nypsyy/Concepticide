@@ -1,5 +1,6 @@
 using Cinemachine;
 using UnityEngine;
+using UnityEngine.UIElements;
 using static GameUtils;
 
 public class ThirdPersonMovement : MonoBehaviour
@@ -10,11 +11,13 @@ public class ThirdPersonMovement : MonoBehaviour
     public CinemachineFreeLook cinemachineCam;
 
     public bool allowMove = true;
-    
+
     [SerializeField]
     private float speed = 6f;
+
     [SerializeField]
     private float turnSmoothTime = 0.1f;
+
     [SerializeField]
     private float turnSmoothVelocity;
 
@@ -26,8 +29,8 @@ public class ThirdPersonMovement : MonoBehaviour
     }
 
     private void Move() {
-        Vector3 moveDirection = allowMove ? new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")) : Vector3.zero;
-        
+        var moveDirection = allowMove ? new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")) : Vector3.zero;
+
         if (moveDirection.magnitude >= 0.1f) {
             var targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
             var angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
@@ -36,37 +39,30 @@ public class ThirdPersonMovement : MonoBehaviour
             var moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             moveDir.y = _rb.velocity.y;
             controller.Move(moveDir.normalized * (speed * Time.deltaTime));
-
         }
 
-        if (Input.GetMouseButton(1))
-        {
+        if (Input.GetMouseButton(1)) {
             cinemachineCam.m_XAxis.m_InputAxisName = "Mouse X";
             cinemachineCam.m_YAxis.m_InputAxisName = "Mouse Y";
         }
-        else
-        {
+        else {
             cinemachineCam.m_XAxis.m_InputAxisName = "";
             cinemachineCam.m_YAxis.m_InputAxisName = "";
 
             cinemachineCam.m_XAxis.m_InputAxisValue = 0f;
             cinemachineCam.m_YAxis.m_InputAxisValue = 0f;
         }
+
         animator.SetFloat(AnimVariables.Running, moveDirection.magnitude);
     }
 
-    private void Update() {
-        Move();
-    }
-    
-    /*private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.GetComponent<Crop>())
-        {
-            if (other.gameObject.GetComponent<Crop>().readyToHarvest() && Input.GetKeyDown("e"))
-            {
-                other.gameObject.GetComponent<Crop>().Harvest();
-            }
-        }
-    }*/
+    private void Update() => Move();
+
+    // private void OnTriggerEnter(Collider other) {
+    //     if (other.gameObject.GetComponent<Crop>()) {
+    //         if (other.gameObject.GetComponent<Crop>().readyToHarvest() && Input.GetKeyDown("e")) {
+    //             other.gameObject.GetComponent<Crop>().Harvest();
+    //         }
+    //     }
+    // }
 }

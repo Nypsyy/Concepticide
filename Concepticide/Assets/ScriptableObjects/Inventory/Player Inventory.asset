@@ -15,4 +15,64 @@ MonoBehaviour:
   database: {fileID: 11400000, guid: 2db10f71301108747bb44ccb4a3f7a90, type: 2}
   savePath: /playerInv.Save
   container:
-    items: []
+    items:
+    - allowedItems: 
+      item:
+        id: -1
+        name: 
+      amount: 0
+    - allowedItems: 
+      item:
+        id: -1
+        name: 
+      amount: 0
+    - allowedItems: 
+      item:
+        id: -1
+        name: 
+      amount: 0
+    - allowedItems: 
+      item:
+        id: -1
+        name: 
+      amount: 0
+    - allowedItems: 
+      item:
+        id: -1
+        name: 
+      amount: 0
+    - allowedItems: 
+      item:
+        id: -1
+        name: 
+      amount: 0
+    - allowedItems: 
+      item:
+        id: -1
+        name: 
+      amount: 0
+    - allowedItems: 
+      item:
+        id: -1
+        name: 
+      amount: 0
+    - allowedItems: 
+      item:
+        id: -1
+        name: 
+      amount: 0
+    - allowedItems: 
+      item:
+        id: -1
+        name: 
+      amount: 0
+    - allowedItems: 
+      item:
+        id: -1
+        name: 
+      amount: 0
+    - allowedItems: 
+      item:
+        id: -1
+        name: 
+      amount: 0

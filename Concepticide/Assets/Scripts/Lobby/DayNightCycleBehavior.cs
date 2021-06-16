@@ -1,6 +1,7 @@
 using UnityEngine;
+using static GameUtils;
 
-public class NightBehavior : MonoBehaviour
+public class DayNightCycleBehavior : MonoBehaviour
 {
     public Material sun;
     public Material moon;
@@ -10,12 +11,11 @@ public class NightBehavior : MonoBehaviour
     public void NightTime() {
         RenderSettings.skybox = moon;
         moonObj.SetActive(true);
-        moonObj.GetComponent<Animator>().SetTrigger("StartNight");
+        moonObj.GetComponent<Animator>().SetTrigger(AnimVariables.StartNight);
     }
-
 
     public void DayTime() {
         RenderSettings.skybox = sun;
         moonObj.SetActive(false);
-    } 
+    }
 }

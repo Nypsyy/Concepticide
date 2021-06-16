@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f1e4891f8904469ada8c8fd7e54bb9e, type: 3}
-  m_Name: Tomat
+  m_Name: Sword
   m_EditorClassIdentifier: 
-  uiDisplay: {fileID: 2443381508606744931, guid: 8e31a03e47e438b46b22b3f44bfb72f0, type: 3}
-  type: 6
+  uiDisplay: {fileID: 3495713834309950518, guid: 8e31a03e47e438b46b22b3f44bfb72f0, type: 3}
+  type: 3
   itemData:
     id: -1
-    name: Tomat
-  stackable: 1
+    name: Sword
+  stackable: 0
   description: 
