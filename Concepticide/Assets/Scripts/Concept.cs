@@ -26,6 +26,9 @@ public class Concept : MonoBehaviour
     public TextMeshProUGUI timerText;
     public int maxTime;
     public TextMeshProUGUI gameInfoText;
+    public Boss bossNature; // needed to change stats
+    public Boss bossMagic; // needed to change stats
+    public Boss bossTrading; // needed to change stats
 
     private GameTimer _gameTimer;
 
@@ -78,15 +81,43 @@ public class Concept : MonoBehaviour
 
         switch (concept) {
             case Id.Nature:
+                bossMagic.hp += 100;
+
+                bossTrading.attack += 20;
+
+                m_PlayerCombat.hp += 100;
+                m_PlayerCombat.defense += 10;
+                
                 Nature(false);
                 break;
 
             case Id.Trading:
+                bossMagic.hp += 50;
+                bossMagic.attack += 10;
+
+                bossNature.hp += 100;
+                bossNature.defense += 10;
+                
+
+                m_PlayerCombat.attack += 20;
+
                 m_PlayerCombat.hasItems = false;
                 Trading(false);
                 break;
 
             case Id.Magic:
+                bossNature.hp += 50;
+                bossNature.defense += 10;
+                bossNature.attack += -5;
+
+                bossTrading.hp += 50;
+                bossTrading.defense += -5;
+                bossTrading.attack += 10;
+
+                m_PlayerCombat.hp += 50;
+                m_PlayerCombat.defense += 5;
+                m_PlayerCombat.attack += 10;
+
                 m_PlayerCombat.hasMagic = false;
                 Magic(false);
                 break;
