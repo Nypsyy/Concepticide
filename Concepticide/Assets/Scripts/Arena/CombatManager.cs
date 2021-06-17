@@ -7,6 +7,7 @@ public class CombatManager : MonoBehaviour
 {
     public PlayerCombat playerCombat;
     public Boss boss;
+    public Transform combatCamera;
 
 
     public MenuPanel menuPanel;
@@ -112,6 +113,10 @@ public class CombatManager : MonoBehaviour
 
         playerCombat.statField.text = playerStatString;
         boss.statField.text = "ATK : " + boss.attack + "\nDEF : " + boss.defense;
+        playerCombat.stats.transform.LookAt(combatCamera);
+        playerCombat.stats.transform.Rotate(new Vector3(0, 180, 0));
+        boss.stats.transform.LookAt(combatCamera);
+        boss.stats.transform.Rotate(new Vector3(0, 180, 0));
     }
 
     private int _heavyAttackCooldown = 0;
