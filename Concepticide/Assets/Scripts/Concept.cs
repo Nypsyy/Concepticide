@@ -24,7 +24,7 @@ public class Concept : MonoBehaviour
 
     public PlayerCombat m_PlayerCombat; // needed for applying magic & trading penalties
     public TextMeshProUGUI timerText;
-    public float maxTime;
+    public int maxTime;
     public TextMeshProUGUI gameInfoText;
 
     private GameTimer _gameTimer;
@@ -44,20 +44,15 @@ public class Concept : MonoBehaviour
         Trading(true);
 
         _gameTimer = new GameTimer(maxTime);
+        _gameTimer.onTimerCountdown += UpdateTimerText;
     }
 
-    private void Update() {
-        if (!timerText.gameObject.activeSelf)
-            return;
-
-        UpdateTimerText();
-        timerText.text = TimeSpan.FromSeconds(_gameTimer.currentTime).Minutes.ToString("00")
+    private void UpdateTimerText(int time) {
+        timerText.text = TimeSpan.FromSeconds(time).Minutes.ToString("00")
                          + ":"
-                         + (_gameTimer.currentTime % 60).ToString("00");
-    }
+                         + (time % 60).ToString("00");
 
-    private void UpdateTimerText() {
-        switch (_gameTimer.currentTime) {
+        switch (time) {
             case 60:
                 timerText.color = Color.red;
                 break;

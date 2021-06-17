@@ -15,8 +15,9 @@ public abstract class UserInterface : MonoBehaviour
     protected Dictionary<GameObject, InventorySlot> slotsOnInterface = new Dictionary<GameObject, InventorySlot>();
 
     private void Start() {
-        foreach (var slot in inventory.container.items) {
+        foreach (var slot in inventory.GetSlots) {
             slot.uiParent = this;
+            slot.onAfterUpdate += OnSlotUpdate;
         }
 
         CreateSlots();
@@ -25,8 +26,22 @@ public abstract class UserInterface : MonoBehaviour
         AddEvent(gameObject, EventTriggerType.PointerExit, delegate { OnExitInterface(gameObject); });
     }
 
-    // TODO: Change to an event
-    private void Update() => slotsOnInterface.UpdateSlotDisplay();
+    // private void Update() => slotsOnInterface.UpdateSlotDisplay();
+
+    private void OnSlotUpdate(InventorySlot slot) {
+        // There is an item
+        if (slot.item.id >= 0) {
+            slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = slot.ItemObject.uiDisplay;
+            slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+            slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = slot.amount == 1 ? "" : slot.amount.ToString("n0");
+        }
+        // No items ==> clear the slot
+        else {
+            slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
+            slot.slotDisplay.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+            slot.slotDisplay.GetComponentInChildren<TextMeshProUGUI>().text = "";
+        }
+    }
 
     // Inventory at start
     protected abstract void CreateSlots();

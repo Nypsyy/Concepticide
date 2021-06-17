@@ -4,24 +4,21 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
+/**
+ * =====================================
+ * INVENTORY OBJECT CLASS
+ * =====================================
+ */
 [CreateAssetMenu(fileName = "New Inventory", menuName = "Inventory System/Inventory", order = 0)]
 public class InventoryObject : ScriptableObject
 {
     public ItemDatabaseObject database;
     public string savePath;
-
     public Inventory container;
+    public InventorySlot[] GetSlots => container.slots;
 
-    public int EmptySlotCount {
-        get { return container.items.Count(slot => slot.item.id <= -1); }
-    }
-
-    public void RemoveItem(Item item) {
-        for (var i = 0; i < container.items.Length; i++) {
-            if (container.items[i].item == item) {
-                container.items[i].RemoveSlot();
-            }
-        }
+    private int EmptySlotCount {
+        get { return GetSlots.Count(slot => slot.item.id <= -1); }
     }
 
     public void SwapItems(InventorySlot slot1, InventorySlot slot2) {
@@ -33,8 +30,8 @@ public class InventoryObject : ScriptableObject
         slot1.UpdateSlot(tmp.item, tmp.amount);
     }
 
-    public InventorySlot SetFirstEmptySlot(Item item, int amount) {
-        foreach (var slot in container.items) {
+    private InventorySlot SetFirstEmptySlot(Item item, int amount) {
+        foreach (var slot in GetSlots) {
             if (slot.item.id > -1) continue;
 
             slot.UpdateSlot(item, amount);
@@ -51,7 +48,7 @@ public class InventoryObject : ScriptableObject
 
         var slot = FindItemInInventory(item);
 
-        if (slot == null || !database.items[item.id].stackable) {
+        if (slot == null || !database.itemObjects[item.id].stackable) {
             SetFirstEmptySlot(item, amount);
             return true;
         }
@@ -60,8 +57,8 @@ public class InventoryObject : ScriptableObject
         return true;
     }
 
-    public InventorySlot FindItemInInventory(Item item) {
-        return container.items.FirstOrDefault(slot => slot.item.id == item.id);
+    private InventorySlot FindItemInInventory(Item item) {
+        return GetSlots.FirstOrDefault(slot => slot.item.id == item.id);
     }
 
     [ContextMenu("Save")]
@@ -111,8 +108,8 @@ public class InventoryObject : ScriptableObject
         Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Open, FileAccess.Read);
         var newContainer = (Inventory) formatter.Deserialize(stream);
 
-        for (var i = 0; i < newContainer.items.Length; i++) {
-            container.items[i].UpdateSlot(newContainer.items[i].item, newContainer.items[i].amount);
+        for (var i = 0; i < newContainer.slots.Length; i++) {
+            GetSlots[i].UpdateSlot(newContainer.slots[i].item, newContainer.slots[i].amount);
         }
 
         stream.Close();
@@ -125,57 +122,76 @@ public class InventoryObject : ScriptableObject
     }
 }
 
+/**
+ * =====================================
+ * INVENTORY CLASS
+ * =====================================
+ */
 [System.Serializable]
 public class Inventory
 {
     // List of all objects held in the inventory
-    public InventorySlot[] items = new InventorySlot[GameUtils.InventorySize];
+    public InventorySlot[] slots = new InventorySlot[GameUtils.InventorySize];
 
     public void Clear() {
-        foreach (var item in items) {
-            item.RemoveItem();
-        }
+        foreach (var slot in slots)
+            slot.RemoveItem();
     }
 }
 
+public delegate void SlotUpdated(InventorySlot slot);
+
+/**
+ * =====================================
+ * INVENTORY SLOT CLASS
+ * =====================================
+ */
 [System.Serializable]
 public class InventorySlot
 {
     [System.NonSerialized]
     public UserInterface uiParent;
 
+    [System.NonSerialized]
+    public GameObject slotDisplay;
+
+    [System.NonSerialized]
+    public SlotUpdated onBeforeUpdate;
+
+    [System.NonSerialized]
+    public SlotUpdated onAfterUpdate;
+
+
     public ItemType[] allowedItems = new ItemType[0];
     public Item item;  // The scriptable object
     public int amount; // How much
 
-    public ItemObject ItemObject => item.id >= 0 ? uiParent.inventory.database.items[item.id] : null;
+    public ItemObject ItemObject => item.id >= 0 ? uiParent.inventory.database.itemObjects[item.id] : null;
 
     // Basic constructor
     public InventorySlot() {
-        item = new Item();
-        amount = 0;
+        UpdateSlot(new Item(), 0);
     }
 
     public InventorySlot(Item item, int amount) {
-        this.item = item;
-        this.amount = amount;
+        UpdateSlot(item, amount);
     }
 
+    public void UpdateSlot(Item item, int amount) {
+        onBeforeUpdate?.Invoke(this);
+
+        this.item = item;
+        this.amount = amount;
+
+        onAfterUpdate?.Invoke(this);
+    }
 
     public bool CanPlaceInSlot(ItemObject itemObj) {
         return allowedItems.Length <= 0 || itemObj == null || itemObj.itemData.id < 0 || allowedItems.Any(type => itemObj.type == type);
     }
 
-    public void UpdateSlot(Item item, int amount) {
-        this.item = item;
-        this.amount = amount;
-    }
-
-    public void RemoveSlot() => UpdateSlot(null, 0);
-
     public void RemoveItem() {
-        item = new Item();
-        amount = 0;
+        UpdateSlot(new Item(), 0);
     }
 
     public void AddAmount(int val) {
