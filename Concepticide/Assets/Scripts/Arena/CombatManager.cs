@@ -66,6 +66,7 @@ public class CombatManager : MonoBehaviour
 
         menuPanel.PushInfo("Le combat vient de commencer !");
 
+        playerCombat.stats.gameObject.SetActive(true);
         playerHP = playerCombat.hp;
         playerMana = playerCombat.mana;
         bossHP = boss.hp;
@@ -163,6 +164,7 @@ public class CombatManager : MonoBehaviour
 
     private void EndCombat(bool hasPlayerWon) {
         menuPanel.enabled = false;
+        playerCombat.stats.gameObject.SetActive(false);
         playerCombat.StopCombat();
         boss.StopCombat();
         gameObject.SetActive(false);

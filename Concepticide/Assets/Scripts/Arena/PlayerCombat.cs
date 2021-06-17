@@ -45,6 +45,8 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        stats.transform.LookAt(Camera.current.transform);
+        stats.transform.Rotate(new Vector3(0, 180, 0));
     }
 
     public void StartCombat(CombatManager manager) {
