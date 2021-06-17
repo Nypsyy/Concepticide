@@ -191,7 +191,7 @@ public class Concept : MonoBehaviour
     }
 
     private bool IsVictory() {
-        if (isNatureAlive && isMagicAlive && isTradingAlive)
+        if (isNatureAlive || isMagicAlive || isTradingAlive)
             return false;
         //if (!(!isNatureAlive & !isMagicAlive & !isTradingAlive))
 

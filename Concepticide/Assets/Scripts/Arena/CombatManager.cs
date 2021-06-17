@@ -69,6 +69,9 @@ public class CombatManager : MonoBehaviour
 
         playerCombat.stats.gameObject.SetActive(true);
         playerHP = playerCombat.hp;
+        playerCombat.healthBar.maxValue = playerHP;
+        playerCombat.healthBar.value = playerHP - 1;
+        playerCombat.healthBar.value = playerHP;
         playerMana = playerCombat.mana;
         bossHP = boss.hp;
         boss.healthBar.maxValue = bossHP;
