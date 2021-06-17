@@ -69,7 +69,9 @@ public class CombatManager : MonoBehaviour
         playerHP = playerCombat.hp;
         playerMana = playerCombat.mana;
         bossHP = boss.hp;
-
+        boss.healthBar.maxValue = bossHP;
+        boss.healthBar.value = bossHP-1;
+        boss.healthBar.value = bossHP;
         UpdateStatsUI();
 
         lootCount.StartCombat();

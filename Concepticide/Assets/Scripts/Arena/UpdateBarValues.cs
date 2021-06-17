@@ -10,6 +10,6 @@ public class UpdateBarValues : MonoBehaviour
 
     public void UpdateText (float value)
     {
-        BarText.text = value + " / 100";
+        BarText.text = value.ToString();
     }
 }
