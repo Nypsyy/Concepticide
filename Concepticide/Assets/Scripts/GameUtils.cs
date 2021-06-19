@@ -14,6 +14,7 @@ public struct GameUtils
 
     public struct AnimVariables
     {
+        public static readonly int Dead = Animator.StringToHash("Dead");
         public static readonly int StartNight = Animator.StringToHash("StartNight");
         public static readonly int Running = Animator.StringToHash("speed");
         public static readonly int IsOpen = Animator.StringToHash("isOpen");

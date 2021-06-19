@@ -10,6 +10,7 @@ public class StaticInterface : UserInterface
         slotsOnInterface = new Dictionary<GameObject, InventorySlot>();
 
         for (var i = 0; i < inventory.GetSlots.Length; i++) {
+            Debug.Log("Slot: " + inventory.GetSlots[i]);
             var obj = slots[i];
 
             if (isPlayerInventory) {

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections;
-using TMPro;
+﻿using System.Collections;
 using UnityEngine;
 
 public delegate void TimerUpdated(int time);

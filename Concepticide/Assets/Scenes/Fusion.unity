@@ -9135,6 +9135,7 @@ GameObject:
   - component: {fileID: 345817497}
   - component: {fileID: 345817496}
   - component: {fileID: 345817495}
+  - component: {fileID: 345817498}
   m_Layer: 5
   m_Name: ShopKeeperInventory
   m_TagString: Untagged
@@ -9219,6 +9220,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 345817493}
   m_CullTransparentMesh: 1
+--- !u!114 &345817498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 345817493}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1001 &346222533
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14237,13 +14251,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da43c4cb13d2b16448b73e38f4cbd0d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Concept: {fileID: 713786844}
+  concept: {fileID: 713786844}
+  dialogueManager: {fileID: 1015801046}
   dialogue1:
     name: Marchand
     sentences:
     - 'Bonjour ! '
     - Voici ma marchandise.
     - Au revoir.
+  inventoryObject: {fileID: 11400000, guid: 3a7f5427376059941a9b5cad8ef4171e, type: 2}
+  shopKeeperInvUI: {fileID: 345817493}
+  playerInvUI: {fileID: 1766103198}
 --- !u!65 &544586637
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -14269,7 +14287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  outlineMode: 1
+  outlineMode: 0
   outlineColor: {r: 1, g: 0.71898425, b: 0, a: 1}
   outlineWidth: 3
   precomputeOutline: 0
@@ -26631,8 +26649,6 @@ MonoBehaviour:
   nameText: {fileID: 2097284441}
   dialogueText: {fileID: 1275933466}
   animator: {fileID: 1519945933}
-  shopKeeperInventory: {fileID: 345817493}
-  playerInventory: {fileID: 1766103198}
 --- !u!4 &1015801047
 Transform:
   m_ObjectHideFlags: 0
@@ -32591,7 +32607,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187721706}
-  m_LocalRotation: {x: 0.2693924, y: 0.000000033130764, z: -0.000000009267802, w: 0.9630305}
+  m_LocalRotation: {x: 0.2693924, y: -0.00000004058871, z: 0.000000011354043, w: 0.9630305}
   m_LocalPosition: {x: 14.79, y: 25.81, z: -24.12}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -35007,6 +35023,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 345817494}
     m_Modifications:
+    - target: {fileID: 7212879439525996481, guid: ce22a32c8b2d4304793606220921ffbf, type: 3}
+      propertyPath: m_text
+      value: 10g
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212879440326913570, guid: ce22a32c8b2d4304793606220921ffbf, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212879440326913570, guid: ce22a32c8b2d4304793606220921ffbf, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -3237844493445452581, guid: 8e31a03e47e438b46b22b3f44bfb72f0, type: 3}
     - target: {fileID: 7212879441521910249, guid: ce22a32c8b2d4304793606220921ffbf, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -36885,7 +36913,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1338355050
 RectTransform:
   m_ObjectHideFlags: 0
@@ -37086,15 +37114,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 589702913278164959, guid: 6a378589b74372d4788be5067354e8a8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.2518773
+      value: 0.25187728
       objectReference: {fileID: 0}
     - target: {fileID: 589702913278164959, guid: 6a378589b74372d4788be5067354e8a8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000038243684
+      value: 0.0000000047046522
       objectReference: {fileID: 0}
     - target: {fileID: 589702913278164959, guid: 6a378589b74372d4788be5067354e8a8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000009953629
+      value: -0.000000001224473
       objectReference: {fileID: 0}
     - target: {fileID: 1064244780061535396, guid: 6a378589b74372d4788be5067354e8a8, type: 3}
       propertyPath: m_LocalPosition.y
@@ -37114,11 +37142,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1064244780061535396, guid: 6a378589b74372d4788be5067354e8a8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.000000016550707
+      value: -0.00000002870055
       objectReference: {fileID: 0}
     - target: {fileID: 1064244780061535396, guid: 6a378589b74372d4788be5067354e8a8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.000000004629796
+      value: 0.00000000802852
       objectReference: {fileID: 0}
     - target: {fileID: 3916886678513426781, guid: 6a378589b74372d4788be5067354e8a8, type: 3}
       propertyPath: m_FollowOffset.y
@@ -37134,27 +37162,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3966786472964096025, guid: 6a378589b74372d4788be5067354e8a8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.9567394
       objectReference: {fileID: 0}
     - target: {fileID: 3966786472964096025, guid: 6a378589b74372d4788be5067354e8a8, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 1.5594234
       objectReference: {fileID: 0}
     - target: {fileID: 3966786472964096025, guid: 6a378589b74372d4788be5067354e8a8, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9579711
+      value: 0.97289896
       objectReference: {fileID: 0}
     - target: {fileID: 3966786472964096025, guid: 6a378589b74372d4788be5067354e8a8, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.2868649
+      value: 0.23123088
       objectReference: {fileID: 0}
     - target: {fileID: 3966786472964096025, guid: 6a378589b74372d4788be5067354e8a8, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.00000000907418
+      value: -0.000000028994652
       objectReference: {fileID: 0}
     - target: {fileID: 3966786472964096025, guid: 6a378589b74372d4788be5067354e8a8, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.000000002717269
+      value: 0.000000006891218
       objectReference: {fileID: 0}
     - target: {fileID: 7207751545039460375, guid: 6a378589b74372d4788be5067354e8a8, type: 3}
       propertyPath: m_FollowOffset.y
@@ -45348,6 +45376,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 345817494}
     m_Modifications:
+    - target: {fileID: 7212879439525996481, guid: ce22a32c8b2d4304793606220921ffbf, type: 3}
+      propertyPath: m_text
+      value: 15g
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212879440326913570, guid: ce22a32c8b2d4304793606220921ffbf, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7212879440326913570, guid: ce22a32c8b2d4304793606220921ffbf, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 7771185243529891863, guid: 8e31a03e47e438b46b22b3f44bfb72f0, type: 3}
     - target: {fileID: 7212879441521910249, guid: ce22a32c8b2d4304793606220921ffbf, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -49666,6 +49706,7 @@ GameObject:
   - component: {fileID: 1766103202}
   - component: {fileID: 1766103201}
   - component: {fileID: 1766103200}
+  - component: {fileID: 1766103203}
   m_Layer: 5
   m_Name: PlayerInventory
   m_TagString: Untagged
@@ -49750,6 +49791,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1766103198}
   m_CullTransparentMesh: 1
+--- !u!114 &1766103203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1766103198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
 --- !u!1001 &1767607357
 PrefabInstance:
   m_ObjectHideFlags: 0

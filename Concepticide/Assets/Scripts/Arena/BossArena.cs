@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BossArena : MonoBehaviour
 {
@@ -20,19 +17,7 @@ public class BossArena : MonoBehaviour
     public GameObject staticCam;
 
     public Concept concept;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     // Start Combat
     public void StartCombat(Concept.Id bossId) {

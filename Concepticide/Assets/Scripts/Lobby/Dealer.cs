@@ -1,11 +1,25 @@
+using System;
 using UnityEngine;
 
 public class Dealer : MonoBehaviour
 {
-    public Concept m_Concept;
+    public Concept concept;
+    public DialogueManager dialogueManager;
     public Dialogue dialogue1;
+    public InventoryObject inventoryObject;
+    public GameObject shopKeeperInvUI;
+    public GameObject playerInvUI;
 
-    private Dialogue dialogue2;
+    private Dialogue _dialogue2;
+
+    private void OnEnable() {
+        inventoryObject.Load();
+    }
+
+    private void Update() {
+        shopKeeperInvUI.gameObject.SetActive(dialogueManager.SentenceNb == 1);
+        playerInvUI.gameObject.SetActive(dialogueManager.SentenceNb == 1);
+    }
 
     private void OnMouseEnter() {
         GetComponent<Outline>().enabled = true;
@@ -16,8 +30,8 @@ public class Dealer : MonoBehaviour
     }
 
     private void OnMouseDown() {
-        if (!m_Concept.isTradingAlive) return;
+        if (!concept.isTradingAlive) return;
 
-        FindObjectOfType<DialogueManager>().StartDialogue(dialogue1);
+        dialogueManager.StartDialogue(dialogue1);
     }
 }

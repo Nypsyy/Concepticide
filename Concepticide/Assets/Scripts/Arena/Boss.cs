@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,25 +11,16 @@ public class Boss : MonoBehaviour
     public Slider healthBar;
     public Text statField;
 
-    public enum Action { Attack };
+    public enum Action
+    {
+        Attack
+    }
 
     private CombatManager _combatManager;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void StartCombat(CombatManager manager) {
         _combatManager = manager;
         stats.enabled = true;
-        
     }
 
     public void StopCombat() {

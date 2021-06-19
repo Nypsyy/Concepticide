@@ -6,50 +6,45 @@ using static GameUtils;
 
 public class DialogueManager : MonoBehaviour
 {
-    private Queue<string> sentences;
     public Text nameText;
     public Text dialogueText;
     public Animator animator;
-
-    public GameObject shopKeeperInventory;
-    public GameObject playerInventory;
+    public int SentenceNb => _sentences.Count;
+    
+    private Queue<string> _sentences;
 
     private void Start() {
-        sentences = new Queue<string>();
+        _sentences = new Queue<string>();
     }
 
     public void StartDialogue(Dialogue dialogue) {
         animator.SetBool(AnimVariables.IsOpen, true);
         nameText.text = dialogue.name;
 
-        sentences.Clear();
+        _sentences.Clear();
 
         foreach (var sentence in dialogue.sentences) {
-            sentences.Enqueue(sentence);
+            _sentences.Enqueue(sentence);
         }
 
         DisplayNextSentence();
     }
 
     public void DisplayNextSentence() {
-        shopKeeperInventory.SetActive(sentences.Count == 2);
-        playerInventory.SetActive(sentences.Count == 2);
         // m_ShopPanel.SetActive(sentences.Count == 2);
 
-        if (sentences.Count == 0) {
+        if (_sentences.Count == 0) {
             EndDialogue();
             return;
         }
 
-        var sentence = sentences.Dequeue();
+        var sentence = _sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
     }
 
     public void EndDialogue() {
         animator.SetBool(AnimVariables.IsOpen, false);
-        shopKeeperInventory.SetActive(false);
-        playerInventory.SetActive(false);
     }
 
     private IEnumerator TypeSentence(string sentence) {

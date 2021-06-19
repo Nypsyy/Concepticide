@@ -16,63 +16,13 @@ MonoBehaviour:
   savePath: /shopKeeperInv.Save
   container:
     slots:
-    - allowedItems: 
+    - allowedItems: 04000000
       item:
-        id: -1
-        name: 
-      amount: 0
-    - allowedItems: 
+        id: 0
+        name: Health Potion
+      amount: 100
+    - allowedItems: 05000000
       item:
-        id: -1
-        name: 
-      amount: 0
-    - allowedItems: 
-      item:
-        id: -1
-        name: 
-      amount: 0
-    - allowedItems: 
-      item:
-        id: -1
-        name: 
-      amount: 0
-    - allowedItems: 
-      item:
-        id: -1
-        name: 
-      amount: 0
-    - allowedItems: 
-      item:
-        id: -1
-        name: 
-      amount: 0
-    - allowedItems: 
-      item:
-        id: -1
-        name: 
-      amount: 0
-    - allowedItems: 
-      item:
-        id: -1
-        name: 
-      amount: 0
-    - allowedItems: 
-      item:
-        id: -1
-        name: 
-      amount: 0
-    - allowedItems: 
-      item:
-        id: -1
-        name: 
-      amount: 0
-    - allowedItems: 
-      item:
-        id: -1
-        name: 
-      amount: 0
-    - allowedItems: 
-      item:
-        id: -1
-        name: 
-      amount: 0
+        id: 1
+        name: Mana Potion
+      amount: 100

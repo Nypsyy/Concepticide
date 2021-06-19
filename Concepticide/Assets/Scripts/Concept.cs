@@ -11,7 +11,7 @@ public class Concept : MonoBehaviour
 
     public Material m_NatureMaterial0;
     public Material m_NatureMaterial1;
-    private GameObject[] m_ToHide;
+    private GameObject[] _toHide;
 
     [HideInInspector]
     public bool isNatureAlive;
@@ -26,8 +26,8 @@ public class Concept : MonoBehaviour
     public TextMeshProUGUI timerText;
     public int maxTime;
     public TextMeshProUGUI gameInfoText;
-    public Boss bossNature; // needed to change stats
-    public Boss bossMagic; // needed to change stats
+    public Boss bossNature;  // needed to change stats
+    public Boss bossMagic;   // needed to change stats
     public Boss bossTrading; // needed to change stats
 
     private GameTimer _gameTimer;
@@ -40,7 +40,7 @@ public class Concept : MonoBehaviour
     }
 
     private void Start() {
-        m_ToHide ??= GameObject.FindGameObjectsWithTag("Nature");
+        _toHide ??= GameObject.FindGameObjectsWithTag("Nature");
 
         Nature(true);
         Magic(true);
@@ -87,7 +87,7 @@ public class Concept : MonoBehaviour
 
                 m_PlayerCombat.hp += 100;
                 m_PlayerCombat.defense += 10;
-                
+
                 Nature(false);
                 break;
 
@@ -97,7 +97,6 @@ public class Concept : MonoBehaviour
 
                 bossNature.hp += 100;
                 bossNature.defense += 10;
-                
 
                 m_PlayerCombat.attack += 20;
 
@@ -133,7 +132,7 @@ public class Concept : MonoBehaviour
             m_Nature[1].SetColor(MaterialVariables.NatureColor, new Color(1f, 1f, 1f));
             m_Nature[2].SetColor(MaterialVariables.NatureColor, new Color(1f, 1f, 1f));
 
-            foreach (var toHide in m_ToHide) {
+            foreach (var toHide in _toHide) {
                 toHide.SetActive(true);
             }
 
@@ -150,7 +149,7 @@ public class Concept : MonoBehaviour
             timerText.gameObject.SetActive(true);
             StartCoroutine(_gameTimer.Countdown());
 
-            foreach (var toHide in m_ToHide) {
+            foreach (var toHide in _toHide) {
                 toHide.SetActive(false);
             }
 

@@ -1,41 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossController : MonoBehaviour
 {
-    Animator animator;
-    void Start()
-    {
-        animator = GetComponent<Animator>();
+    private Animator _animator;
+
+    private void Start() {
+        _animator = GetComponent<Animator>();
+    }
+    
+    private void Update() {
+        // GetHit animation 
+        if (Input.GetKeyDown(KeyCode.J)) {
+            _animator.Play("GetHit");
+        }
+
+        // Punch animation 
+        if (Input.GetKeyDown(KeyCode.L)) {
+            _animator.Play("Attack");
+        }
+
+        // Punch animation 
+        if (Input.GetKeyDown(KeyCode.M)) {
+            _animator.SetBool(GameUtils.AnimVariables.Dead, true);
+            Invoke(nameof(Destroy), 4);
+        }
     }
 
-
-    void Update()
-    {
-        //GetHit animation 
-        if(Input.GetKeyDown(KeyCode.J))
-        {
-            animator.Play("GetHit");
-        }
-
-        //Punch animation 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            animator.Play("Attack");
-        }
-
-        //Punch animation 
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            animator.SetBool("Dead", true);
-            Invoke("Destroy", 4);
-        }
-
-    }
-
-    private void Destroy()
-    {
+    private void Destroy() {
         Destroy(gameObject);
     }
 }
