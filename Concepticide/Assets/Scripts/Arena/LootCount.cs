@@ -1,13 +1,15 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class LootCount : MonoBehaviour
 {
     public int count = 10;
 
-    public Text display;
+    public TextMeshProUGUI display;
     public GameObject iconModel;
+    public GameObject dest;
 
     private bool _inCombat;
     private int _animating;
@@ -74,14 +76,15 @@ public class LootCount : MonoBehaviour
         var icon = Instantiate(iconModel, transform);
         icon.SetActive(true);
         var rectTransform = icon.GetComponent<RectTransform>();
-        var aimPos = new Vector2(-Screen.width / 2 + rectTransform.rect.width / 2, Screen.height / 2 - rectTransform.rect.height / 2);
+        rectTransform.anchoredPosition = new Vector2(Screen.width / 2, -Screen.height / 2);
+        Vector2 aimPos = dest.GetComponent<RectTransform>().anchoredPosition;
 
         const float smoothTime = 0.1f;
         var velocity = new Vector2(0, 0);
 
         while ((rectTransform.anchoredPosition - aimPos).sqrMagnitude > 9) {
             yield return new WaitForSeconds(0.01f);
-            rectTransform.anchoredPosition = Vector2.SmoothDamp(rectTransform.anchoredPosition, aimPos * 1.02f, ref velocity, smoothTime);
+            rectTransform.anchoredPosition = Vector2.SmoothDamp(rectTransform.anchoredPosition, aimPos, ref velocity, smoothTime);
         }
 
         rectTransform.anchoredPosition = aimPos;
