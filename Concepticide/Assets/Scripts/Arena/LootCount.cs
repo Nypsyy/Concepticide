@@ -6,6 +6,7 @@ using TMPro;
 public class LootCount : MonoBehaviour
 {
     public int count = 10;
+    
 
     public TextMeshProUGUI display;
     public GameObject iconModel;
@@ -14,6 +15,8 @@ public class LootCount : MonoBehaviour
     private bool _inCombat;
     private int _animating;
     private int _incomingCount;
+    private int _costDisplay = 0;
+    private bool _animCost = false;
 
     private void Start() {
         Refresh();
@@ -23,6 +26,8 @@ public class LootCount : MonoBehaviour
         var s = $"{count}";
         if (_incomingCount > 0)
             s = $"{s} (+{_incomingCount})";
+        else if (_costDisplay > 0)
+            s = $"{s} (-{_costDisplay})";
         display.text = s;
     }
 
@@ -53,6 +58,30 @@ public class LootCount : MonoBehaviour
         _incomingCount = 0;
 
         Refresh();
+    }
+    
+    public void SetCost(int amount) {
+        if (_animCost) return;
+        _costDisplay = amount;
+        Refresh();
+    }
+    
+    public bool ApplyCost() {
+        if (_animCost) return false;
+        if (_costDisplay > count) return false;
+        StartCoroutine(ApplyCostImpl());
+        return true;
+    }
+    
+    private IEnumerator ApplyCostImpl() {
+        _animCost = true;
+        while (_costDisplay > 0) {
+            --_costDisplay;
+            --count;
+            Refresh();
+            yield return new WaitForSeconds(0.14f);
+        }
+        _animCost = false;
     }
 
     public void Add(int i) {
