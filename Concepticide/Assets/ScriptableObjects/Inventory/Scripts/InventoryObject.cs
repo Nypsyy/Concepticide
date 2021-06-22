@@ -57,7 +57,7 @@ public class InventoryObject : ScriptableObject
         return true;
     }
 
-    private InventorySlot FindItemInInventory(Item item) {
+    public InventorySlot FindItemInInventory(Item item) {
         return GetSlots.FirstOrDefault(slot => slot.item.id == item.id);
     }
 

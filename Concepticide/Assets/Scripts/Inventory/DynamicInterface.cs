@@ -12,7 +12,6 @@ public class DynamicInterface : UserInterface
 
     protected override void CreateSlots() {
         slotsOnInterface = new Dictionary<GameObject, InventorySlot>();
-
         for (var i = 0; i < inventory.GetSlots.Length; i++) {
             var obj = Instantiate(slotPrefab, Vector3.zero, Quaternion.identity, transform);
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
