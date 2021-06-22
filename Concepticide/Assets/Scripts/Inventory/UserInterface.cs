@@ -14,7 +14,7 @@ public abstract class UserInterface : MonoBehaviour
 
     protected Dictionary<GameObject, InventorySlot> slotsOnInterface = new Dictionary<GameObject, InventorySlot>();
 
-    private void Start() {
+    private void Awake() {
         foreach (var slot in inventory.GetSlots) {
             slot.uiParent = this;
             slot.onAfterUpdate += OnSlotUpdate;

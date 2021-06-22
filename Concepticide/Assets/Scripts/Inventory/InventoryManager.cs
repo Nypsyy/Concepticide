@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
@@ -8,9 +9,11 @@ public class InventoryManager : MonoBehaviour
     public GameObject equipmentScreen;
 
     private void Update() {
-        if (!Input.GetKeyDown(KeyCode.Tab)) return;
+        // TODO: CORRECTION AFFICHAGE INVENTAIRE
+        inventoryScreen.SetActive(true);
+        if (!Input.GetKeyDown(KeyCode.Tab))
+            return;
 
-        inventoryScreen.SetActive(!inventoryScreen.activeSelf);
         equipmentScreen.SetActive(!equipmentScreen.activeSelf);
     }
 

@@ -196,5 +196,6 @@ public class InventorySlot
 
     public void AddAmount(int val) {
         amount += val;
+        UpdateSlot(item, amount);
     }
 }

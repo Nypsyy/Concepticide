@@ -18,7 +18,7 @@ public class Crop : MonoBehaviour
         _largeCrop = gameObject.transform.GetChild(2).gameObject;
 
         _fx = gameObject.transform.GetChild(3).gameObject.GetComponent<ParticleSystem>();
-        
+
         InvokeRepeating(nameof(TryGrow), 5, 5);
     }
 
@@ -45,10 +45,13 @@ public class Crop : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other) {
-        if (!other.CompareTag("Player")) return;
-        if (!IsHarvestable) return;
+        if (!other.CompareTag("Player"))
+            return;
 
-        other.GetComponent<InventoryManager>().inventory.AddItem(new Item(item), 1);
-        Harvest();
+        if (!IsHarvestable)
+            return;
+
+        if (other.GetComponent<InventoryManager>().inventory.AddItem(new Item(item), 1))
+            Harvest();
     }
 }
