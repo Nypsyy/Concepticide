@@ -98,7 +98,7 @@ public class Concept : MonoBehaviour
                 bossNature.hp += 100;
                 bossNature.defense += 10;
 
-                m_PlayerCombat.attack += 20;
+                m_PlayerCombat.attack += 50;
 
                 m_PlayerCombat.hasItems = false;
                 Trading(false);
