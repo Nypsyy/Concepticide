@@ -15,7 +15,7 @@ MonoBehaviour:
   uiDisplay: {fileID: 2443381508606744931, guid: 8e31a03e47e438b46b22b3f44bfb72f0, type: 3}
   type: 6
   itemData:
-    id: -1
+    id: 2
     name: Tomat
   stackable: 1
   description: 

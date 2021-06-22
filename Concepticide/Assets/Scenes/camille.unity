@@ -599,6 +599,19 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!114 &163994029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 163994023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d1fcdbab22e6749a4df0841fb7c912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1026891480}
 --- !u!1001 &176139482
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1012,6 +1025,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 95103545008598462, guid: 32e2f781a2330cd4195f380097665b5f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 8b87be01a5c1c324cb28958bc3058d62, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32e2f781a2330cd4195f380097665b5f, type: 3}
 --- !u!1 &450220496
@@ -2087,7 +2104,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1026891479}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.7816048, y: 5.586069, z: 0.7736387}
+  m_LocalPosition: {x: -0.88, y: 5.586069, z: 2.23}
   m_LocalScale: {x: 0.46051, y: 0.46051, z: 0.46051}
   m_Children: []
   m_Father: {fileID: 1919690918}
@@ -2186,7 +2203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAACYn+uISQMGWQIAAAIFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMty4jAQ/BVK5w1lBwjx3nYdQvaQR4XdysUXYY2xClly6REgKf59R7LADjlhuufRPTP2J+HStFBapZeas0fFgPwcEf9Mfox68gH2dKPkin/AKeaNM1v7IBpiXqnlCvHUpxnVgNW8/CU3wgcnCDrJK6WbBdtArow1CFdUGEBKK+uzJUKfI7KPCYf4++F/R0d8KkFa0H1UNk4m2fR6HoOv0vFNMk1nyW0W07LxfDJJ0zRkO1kK2rTAvIu+SHrqlXZNJPqLEd5LqYTgJooj9tAG8zltjUNrGMA4RbNBlo+vgW9qi3+uh8nPVWXARkOaHu64xpl1Vclv1Q2yoWbb6XqnwgUBQVFX8vEbe9XRlVbNw6lrcGNrXm5f6aGkxg7GPITvvqp2ckfFlq4FvNUgn9RSKycZklY7n+oMXN8NSp2N5TWU2z6uk3oBuvb7YtN+scdgfZ8L3qw9Mp52wEqoMOzM54DGtfxBweFQTKyEqBfxz8BfuhleVCTuuTYWqdhQenVr5bQPJYswMm/G2VxpCQGOmluQVNjDC5axl/u74AZtL5h76t+d2Dxyp1fiIiXAfXySXFAvandelqnV7hFM/eys4BJ60Z54wjnlSsruvIYzOaWtnK5oOUjbOM6+XhZhQLPkZs2q6TzJZpRdwbycrSe304xO2WydVSScHpfok4qXTmgcD25N9sUl3tnpkzJaatqGU2ea7pb8o1GDkXNZqVWpAeRzV+EsHDQ2wVeSLRjHAa3AWi7DvslnQYQqt8CKc6EiOF3sraZFX6UgLX9X1iMFycOHpCBHcvwPUEsDBBQAAAgIAACYn+s3KrlibQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM01VFQSi9KLMgoBooYgjilmSkgdrRSSmqipYFZUkqaibmBpWliim6qebJpkrGFiWWiSYppkmWaUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAACYn+uISQMGWQIAAAIFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACYn+s3KrlibQAAAHgAAAAJACQAAAAAAAAAAAAAAKYCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAXgMAAAAA
+    dataString: UEsDBBQAAAgIAACYn+uXmAA4WQIAAAIFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFlVMty4jAQ/BVK5w1liEnw3nYdQvaQR4XdysUXYY2xClly6REgKf59R7LADjlhuufRPTP2J+HStFBapZeas0fFgPwcEf9Mfox68gH2dKPkin/AKeaNM1v7IBpiXqnlCvGJTzOqAat5+UtuhA9OEHSSV0o3C7aBXBlrEK6oMICUVtZnS4Q+R2QfEw7x98P/jo74VIK0oPuobJxcZ+n0NgZfTcY3STqZJfMspmXjdDafz2ch28lS0KYF5l30RSanXpOuiUR/McJ7KZUQ3ERxxB7aYD6nrXFoDQMYp2g2yPLxNfBNbfHPdJj8XFUGbDSk6eGOa5xZV5X8Vt0gG2q2na53KlwQEBR1JR+/sVcdXWnVPJy6Bje25uX2lR5KauxgzEP47qtqJ3dUbOlawFsN8kkttXKSIWm186nOwPRuUOpsLK+h3PZxndQL0LXfFzvpF3sM1ve54M3aI+O0A1ZChWFnPgc0ruUPCg6HYmIlRL2Ifwb+0s3woiJxz7WxSMWG0qtbK6d9KFmEkXkzzuZKSwhw1NyCpMIeXrCMvdzfBTdoe8HcU//uxOaRO70SFykB7uOT5IJ6Ubvzskytdo9g6mdnBZfQi/bEE84pV1J25zWcySlt5XRFy0HaxnH29bIIA5olN2tWpbdJNqPsCm7L2fp6nmY0ZbN1VpFwelyiTypeOqFxPLg12ReXeGenT8poqWkbTp1pulvyj0YNRs5lpValBpDPXYWzcNDYBF9JtmAcB7QCa7kM+yafBRGq3AIrzoWK4HSxt5oWfZWCtPxdWY8UJA8fkoIcyfE/UEsDBBQAAAgIAACYn+s3KrlibQAAAHgAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNEz0jM01VFQSi9KLMgoBooYgjilmSkgdrRSSmqipYFZUkqaibmBpWliim6qebJpkrGFiWWiSYppkmWaUixQfUllQapfYm4qRE9AYklGWmZeSmZeup57UWaKO8hopdhaAFBLAQItABQAAAgIAACYn+uXmAA4WQIAAAIFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACYn+s3KrlibQAAAHgAAAAJACQAAAAAAAAAAAAAAKYCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAXgMAAAAA
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -2790,15 +2807,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da43c4cb13d2b16448b73e38f4cbd0d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Concept: {fileID: 0}
+  concept: {fileID: 0}
+  dialogueManager: {fileID: 0}
   dialogue1:
     name: Marchand
     sentences:
     - 'Bonjour ! '
     - Voici ma marchandise.
     - Au revoir.
-  border: {fileID: 0}
-  notBorder: {fileID: 0}
+  inventoryObject: {fileID: 0}
+  shopKeeperInvUI: {fileID: 0}
+  playerInvUI: {fileID: 0}
 --- !u!65 &1543952096
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3070,6 +3089,12 @@ MonoBehaviour:
   isMagicAlive: 0
   isTradingAlive: 0
   m_PlayerCombat: {fileID: 0}
+  timerText: {fileID: 0}
+  maxTime: 0
+  gameInfoText: {fileID: 0}
+  bossNature: {fileID: 0}
+  bossMagic: {fileID: 0}
+  bossTrading: {fileID: 0}
 --- !u!4 &1594546242
 Transform:
   m_ObjectHideFlags: 0
@@ -3472,7 +3497,6 @@ MonoBehaviour:
   nameText: {fileID: 0}
   dialogueText: {fileID: 0}
   animator: {fileID: 0}
-  m_ShopPanel: {fileID: 0}
 --- !u!1 &1985177268
 GameObject:
   m_ObjectHideFlags: 0
@@ -3586,7 +3610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a97168aee249b445b1699e882a8abf4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeText: {fileID: 450220498}
 --- !u!1001 &2017965727
 PrefabInstance:
   m_ObjectHideFlags: 0
