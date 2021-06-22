@@ -100,8 +100,8 @@ public class PlayerCombat : MonoBehaviour
                                                                           () => _combatManager.EndPlayerTurn(Action.MagicAttack)),
                                                                new Option("Déf+", "Défense += 5 pendant 2 tours",
                                                                           () => _combatManager.EndPlayerTurn(Action.MagicDefense)),
-                                                               new Option("Vit+", "Vitesse x2 pendant 2 tours",
-                                                                          () => _combatManager.EndPlayerTurn(Action.MagicSpeed)),
+                                                               //new Option("Vit+", "Vitesse x2 pendant 2 tours",
+                                                               //           () => _combatManager.EndPlayerTurn(Action.MagicSpeed)),
                                                                new Option("Retour...", "", () => SetMenu(SubMenu.Main))
                                                            });
                 break;
