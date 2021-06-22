@@ -9,16 +9,19 @@ public class Dealer : MonoBehaviour
     public InventoryObject inventoryObject;
     public GameObject shopKeeperInvUI;
     public GameObject playerInvUI;
+    public GameObject playerEquipUI;
 
     private Dialogue _dialogue2;
 
-    private void OnEnable() {
+    private void Awake() {
         inventoryObject.Load();
+        dialogueManager.onDisplaySentence += ShowInventories;
     }
 
-    private void Update() {
-        shopKeeperInvUI.gameObject.SetActive(dialogueManager.SentenceNb == 1);
-        playerInvUI.gameObject.SetActive(dialogueManager.SentenceNb == 1);
+    private void ShowInventories(int sentenceNb) {
+        shopKeeperInvUI.gameObject.SetActive(sentenceNb == 1);
+        playerInvUI.gameObject.SetActive(sentenceNb == 1);
+        playerEquipUI.gameObject.SetActive(sentenceNb == 1);
     }
 
     private void OnMouseEnter() {

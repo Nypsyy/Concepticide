@@ -4,13 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using static GameUtils;
 
+public delegate void DialogueEvent(int nb);
+
 public class DialogueManager : MonoBehaviour
 {
     public Text nameText;
     public Text dialogueText;
     public Animator animator;
-    public int SentenceNb => _sentences.Count;
-    
+    private int SentenceNb => _sentences.Count;
+
+    public DialogueEvent onDisplaySentence;
+
     private Queue<string> _sentences;
 
     private void Start() {
@@ -31,9 +35,7 @@ public class DialogueManager : MonoBehaviour
     }
 
     public void DisplayNextSentence() {
-        // m_ShopPanel.SetActive(sentences.Count == 2);
-
-        if (_sentences.Count == 0) {
+        if (SentenceNb == 0) {
             EndDialogue();
             return;
         }
@@ -41,6 +43,8 @@ public class DialogueManager : MonoBehaviour
         var sentence = _sentences.Dequeue();
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
+
+        onDisplaySentence?.Invoke(SentenceNb);
     }
 
     public void EndDialogue() {

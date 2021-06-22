@@ -9,11 +9,10 @@ public class InventoryManager : MonoBehaviour
     public GameObject equipmentScreen;
 
     private void Update() {
-        // TODO: CORRECTION AFFICHAGE INVENTAIRE
-        inventoryScreen.SetActive(true);
         if (!Input.GetKeyDown(KeyCode.Tab))
             return;
 
+        inventoryScreen.SetActive(!inventoryScreen.activeSelf);
         equipmentScreen.SetActive(!equipmentScreen.activeSelf);
     }
 

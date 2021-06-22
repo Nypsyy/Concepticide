@@ -51,7 +51,7 @@ public class Crop : MonoBehaviour
         if (!IsHarvestable)
             return;
 
-        if (other.GetComponent<InventoryManager>().inventory.AddItem(new Item(item), 1))
+        if (other.GetComponent<InventoryManager>().inventory.AddItem(item.itemData, 1))
             Harvest();
     }
 }
